@@ -1,5 +1,3 @@
-package Views;
-
 import javax.swing.*;
 import java.awt.*;
 import java.net.URL;
@@ -14,7 +12,7 @@ public class Login extends JFrame {
         //弹簧布局
         SpringLayout springLayout;
     public Login() {
-            //root = new JPanel();      //定义面板容器
+
             Container contentPane = getContentPane();
 
 
@@ -57,45 +55,26 @@ public class Login extends JFrame {
             enterButton = new JButton("登录");          //定义按钮对象
 
             centerPanel.add(enterButton);
+            //登录按钮ActionListen
+            enterButton.addActionListener();
 
-            //退出按钮
+
+
+
+            //注册按钮
             closeButton = new JButton("注册");
 
             centerPanel.add(closeButton);
 
             contentPane.add(centerPanel,BorderLayout.CENTER);
 
+            //注册按钮ActionListen
+            closeButton.addActionListener();
 
-            //setLayout(null);         //设置面板为绝对布局
-            //usernameLabel
-            Spring childWidth = Spring.sum(Spring.sum(Spring.width(userNameLabel),Spring.width(userTextField)),
-                    Spring.constant(20));
-            int offsetX = childWidth.getValue() / 2;
-            springLayout.putConstraint(SpringLayout.WEST,userNameLabel,-offsetX,
-                    SpringLayout.HORIZONTAL_CENTER,centerPanel);
-            springLayout.putConstraint(SpringLayout.NORTH,userNameLabel,20,
-                    SpringLayout.NORTH,centerPanel);
-            //userTextField
-            springLayout.putConstraint(SpringLayout.WEST,userTextField,20,
-                    SpringLayout.EAST,userNameLabel);
-            springLayout.putConstraint(SpringLayout.NORTH,userTextField,0,
-                    SpringLayout.NORTH,userNameLabel);
-            //密码
-            springLayout.putConstraint(SpringLayout.EAST,passWordLabel,0,
-                    SpringLayout.EAST,userNameLabel);
-            springLayout.putConstraint(SpringLayout.NORTH,passWordLabel,20,
-                    SpringLayout.SOUTH,userNameLabel);
-            //框
-            springLayout.putConstraint(SpringLayout.WEST,passWordTextField,20,
-                    SpringLayout.EAST,passWordLabel);
-            springLayout.putConstraint(SpringLayout.NORTH,passWordTextField,0,
-                    SpringLayout.NORTH,passWordLabel);
-            //button
-            springLayout.putConstraint(SpringLayout.WEST,enterButton,50,SpringLayout.WEST,passWordLabel);
-            springLayout.putConstraint(SpringLayout.NORTH,enterButton,20,SpringLayout.SOUTH,passWordLabel);
-            //button2
-            springLayout.putConstraint(SpringLayout.WEST,closeButton,50,SpringLayout.EAST,enterButton);
-            springLayout.putConstraint(SpringLayout.NORTH,closeButton,0,SpringLayout.NORTH,enterButton);
+            /**
+             * TODO: 布局
+             */
+            layoutCenter();
 
             /**
              * TODO:设置窗口风格
@@ -118,9 +97,39 @@ public class Login extends JFrame {
             setResizable(false);
         }
 
+        private void layoutCenter() {
+                Spring childWidth = Spring.sum(Spring.sum(Spring.width(userNameLabel),Spring.width(userTextField)),
+                        Spring.constant(20));
+                int offsetX = childWidth.getValue() / 2;
+                springLayout.putConstraint(SpringLayout.WEST,userNameLabel,-offsetX,
+                        SpringLayout.HORIZONTAL_CENTER,centerPanel);
+                springLayout.putConstraint(SpringLayout.NORTH,userNameLabel,20,
+                        SpringLayout.NORTH,centerPanel);
+                //userTextField
+                springLayout.putConstraint(SpringLayout.WEST,userTextField,20,
+                        SpringLayout.EAST,userNameLabel);
+                springLayout.putConstraint(SpringLayout.NORTH,userTextField,0,
+                        SpringLayout.NORTH,userNameLabel);
+                //密码
+                springLayout.putConstraint(SpringLayout.EAST,passWordLabel,0,
+                        SpringLayout.EAST,userNameLabel);
+                springLayout.putConstraint(SpringLayout.NORTH,passWordLabel,20,
+                        SpringLayout.SOUTH,userNameLabel);
+                //框
+                springLayout.putConstraint(SpringLayout.WEST,passWordTextField,20,
+                        SpringLayout.EAST,passWordLabel);
+                springLayout.putConstraint(SpringLayout.NORTH,passWordTextField,0,
+                        SpringLayout.NORTH,passWordLabel);
+                //button
+                springLayout.putConstraint(SpringLayout.WEST,enterButton,50,SpringLayout.WEST,passWordLabel);
+                springLayout.putConstraint(SpringLayout.NORTH,enterButton,20,SpringLayout.SOUTH,passWordLabel);
+                //button2
+                springLayout.putConstraint(SpringLayout.WEST,closeButton,50,SpringLayout.EAST,enterButton);
+                springLayout.putConstraint(SpringLayout.NORTH,closeButton,0,SpringLayout.NORTH,enterButton);
+        }
 
 
-    public static void main(String[] args) {
+        public static void main(String[] args) {
        // new Login().CreateFrame("text");
         new Login();
     }

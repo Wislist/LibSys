@@ -1,6 +1,6 @@
-package Views;
+package 参考代码;
 
-import javax.swing.JFrame;
+import javax.swing.*;
 
 public class Create_GUI {
 
