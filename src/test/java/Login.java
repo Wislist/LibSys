@@ -1,5 +1,3 @@
-package Views;
-
 import javax.swing.*;
 import java.awt.*;
 import java.net.URL;
@@ -11,10 +9,8 @@ public class Login extends JFrame {
         JLabel userNameLabel,passWordLabel,topWordLabel;
         JTextField userTextField,passWordTextField;
         JButton enterButton,closeButton;
-
+        //弹簧布局
         SpringLayout springLayout;
-
-
     public Login() {
 
             Container contentPane = getContentPane();
@@ -59,17 +55,25 @@ public class Login extends JFrame {
             enterButton = new JButton("登录");          //定义按钮对象
 
             centerPanel.add(enterButton);
+            //登录按钮ActionListen
+            enterButton.addActionListener();
 
-            //退出按钮
+
+
+
+            //注册按钮
             closeButton = new JButton("注册");
 
             centerPanel.add(closeButton);
 
             contentPane.add(centerPanel,BorderLayout.CENTER);
 
+            //注册按钮ActionListen
+            closeButton.addActionListener();
 
-            //setLayout(null);         //设置面板为绝对布局
-            //usernameLabel
+            /**
+             * TODO: 布局
+             */
             layoutCenter();
 
             /**
@@ -85,6 +89,7 @@ public class Login extends JFrame {
 
 
             setDefaultCloseOperation(EXIT_ON_CLOSE);
+            //setBounds(400, 300, 340, 256);
             setLocationRelativeTo(null);
             setSize(600,400);
             setVisible(true);
