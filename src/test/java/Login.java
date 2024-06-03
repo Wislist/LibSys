@@ -1,7 +1,3 @@
-package Views;
-
-import Controller.LoginHandler;
-
 import javax.swing.*;
 import java.awt.*;
 import java.net.URL;
@@ -13,15 +9,12 @@ public class Login extends JFrame {
         JLabel userNameLabel,passWordLabel,topWordLabel;
         JTextField userTextField,passWordTextField;
         JButton enterButton,closeButton;
-
+        //弹簧布局
         SpringLayout springLayout;
-
-        LoginHandler loginHandler;
     public Login() {
 
             Container contentPane = getContentPane();
-            //将LonginHandlder引入
-            loginHandler = new LoginHandler(this);
+
 
             springLayout = new SpringLayout();
             centerPanel = new JPanel(springLayout);
@@ -62,21 +55,25 @@ public class Login extends JFrame {
             enterButton = new JButton("登录");          //定义按钮对象
 
             centerPanel.add(enterButton);
+            //登录按钮ActionListen
+            enterButton.addActionListener();
 
-            //登录的actionListener
-            enterButton.addActionListener(loginHandler);
+
+
 
             //注册按钮
             closeButton = new JButton("注册");
 
             centerPanel.add(closeButton);
-            //action
-            closeButton.addActionListener(loginHandler);
 
             contentPane.add(centerPanel,BorderLayout.CENTER);
 
+            //注册按钮ActionListen
+            closeButton.addActionListener();
 
-            //TODO:布局设置
+            /**
+             * TODO: 布局
+             */
             layoutCenter();
 
             /**
@@ -92,6 +89,7 @@ public class Login extends JFrame {
 
 
             setDefaultCloseOperation(EXIT_ON_CLOSE);
+            //setBounds(400, 300, 340, 256);
             setLocationRelativeTo(null);
             setSize(600,400);
             setVisible(true);
@@ -99,9 +97,6 @@ public class Login extends JFrame {
             setResizable(false);
         }
 
-        /**
-         * TODO:布局设置
-         */
         private void layoutCenter() {
                 Spring childWidth = Spring.sum(Spring.sum(Spring.width(userNameLabel),Spring.width(userTextField)),
                         Spring.constant(20));
@@ -135,7 +130,7 @@ public class Login extends JFrame {
 
 
         public static void main(String[] args) {
-
+       // new Login().CreateFrame("text");
         new Login();
     }
 
