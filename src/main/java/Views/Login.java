@@ -1,16 +1,22 @@
 package Views;
 
 import Controller.LoginHandler;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.swing.*;
 import java.awt.*;
 import java.net.URL;
+
+
 
 public class Login extends JFrame {
 
 
         JPanel root,centerPanel;
         JLabel userNameLabel,passWordLabel,topWordLabel;
+        @Getter@Setter
         JTextField userTextField,passWordTextField;
         JButton enterButton,closeButton;
 
@@ -65,6 +71,8 @@ public class Login extends JFrame {
 
             //登录的actionListener
             enterButton.addActionListener(loginHandler);
+            //按enter
+            enterButton.addKeyListener(loginHandler);
 
             //注册按钮
             closeButton = new JButton("注册");
@@ -97,6 +105,8 @@ public class Login extends JFrame {
             setVisible(true);
             //无法调整窗口大小
             setResizable(false);
+            //为解决Enter键登录问题设置默认按钮
+            getRootPane().setDefaultButton(enterButton);
         }
 
         /**
@@ -137,7 +147,7 @@ public class Login extends JFrame {
         public static void main(String[] args) {
 
         new Login();
-    }
+        }
 
 
 }
