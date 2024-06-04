@@ -1,3 +1,5 @@
+import Controller.LoginHandler;
+
 import javax.swing.*;
 import java.awt.*;
 import java.net.URL;
@@ -11,10 +13,13 @@ public class Login extends JFrame {
         JButton enterButton,closeButton;
         //弹簧布局
         SpringLayout springLayout;
+
+        LoginHandler loginHandler;
     public Login() {
 
             Container contentPane = getContentPane();
 
+            //loginHandler = new LoginHandler(this);
 
             springLayout = new SpringLayout();
             centerPanel = new JPanel(springLayout);
@@ -56,20 +61,20 @@ public class Login extends JFrame {
 
             centerPanel.add(enterButton);
             //登录按钮ActionListen
-            enterButton.addActionListener();
+            enterButton.addActionListener(loginHandler);
 
 
 
 
             //注册按钮
-            closeButton = new JButton("注册");
+            closeButton = new JButton("重置");
 
             centerPanel.add(closeButton);
 
             contentPane.add(centerPanel,BorderLayout.CENTER);
 
             //注册按钮ActionListen
-            closeButton.addActionListener();
+            //closeButton.addActionListener();
 
             /**
              * TODO: 布局

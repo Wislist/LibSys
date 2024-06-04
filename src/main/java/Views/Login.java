@@ -1,6 +1,8 @@
 package Views;
 
 import Controller.LoginHandler;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,12 +13,15 @@ public class Login extends JFrame {
 
         JPanel root,centerPanel;
         JLabel userNameLabel,passWordLabel,topWordLabel;
+        @Getter@Setter
         JTextField userTextField,passWordTextField;
         JButton enterButton,closeButton;
 
         SpringLayout springLayout;
 
         LoginHandler loginHandler;
+
+
     public Login() {
 
             Container contentPane = getContentPane();
@@ -65,6 +70,8 @@ public class Login extends JFrame {
 
             //登录的actionListener
             enterButton.addActionListener(loginHandler);
+            //key
+            enterButton.addKeyListener(loginHandler);
 
             //注册按钮
             closeButton = new JButton("注册");
@@ -88,6 +95,9 @@ public class Login extends JFrame {
             URL resource = Login.class.getClassLoader().getResource("Logo.png");
             Image image = new ImageIcon(resource).getImage();
             setIconImage(image);
+
+            //设置lginenter为默认按钮
+            getRootPane().setDefaultButton(enterButton);
 
 
 
@@ -138,6 +148,5 @@ public class Login extends JFrame {
 
         new Login();
     }
-
 
 }
