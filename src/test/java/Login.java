@@ -1,4 +1,4 @@
-import Controller.LoginHandler;
+import Controller.StuLoginHandler;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,7 +14,7 @@ public class Login extends JFrame {
         //弹簧布局
         SpringLayout springLayout;
 
-        LoginHandler loginHandler;
+        StuLoginHandler stuLoginHandler;
     public Login() {
 
             Container contentPane = getContentPane();
@@ -61,7 +61,7 @@ public class Login extends JFrame {
 
             centerPanel.add(enterButton);
             //登录按钮ActionListen
-            enterButton.addActionListener(loginHandler);
+            enterButton.addActionListener(stuLoginHandler);
 
 
 

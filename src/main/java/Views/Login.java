@@ -1,6 +1,6 @@
 package Views;
 
-import Controller.LoginHandler;
+import Controller.StuLoginHandler;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,21 +12,25 @@ public class Login extends JFrame {
 
 
         JPanel root,centerPanel;
-        JLabel userNameLabel,passWordLabel,topWordLabel;
+        JLabel userNameLabel,passWordLabel,topWordLabel,optionWordLabel;
         @Getter@Setter
         JTextField userTextField,passWordTextField;
         JButton enterButton,closeButton;
 
+        JRadioButton stuButton,teaButton;
+
+        ButtonGroup buttonGroup;
+
         SpringLayout springLayout;
 
-        LoginHandler loginHandler;
+        StuLoginHandler stuLoginHandler;
 
 
     public Login() {
 
             Container contentPane = getContentPane();
             //将LonginHandlder引入
-            loginHandler = new LoginHandler(this);
+            stuLoginHandler = new StuLoginHandler(this);
 
             springLayout = new SpringLayout();
             centerPanel = new JPanel(springLayout);
@@ -40,9 +44,33 @@ public class Login extends JFrame {
 
 
             /**
-             * TODO:登录操作  注册操作
+             * TODO:将东西填上去
              */
             Font centerFont = new Font("楷体",Font.PLAIN,20);
+
+
+            //选项标签
+            optionWordLabel = new JLabel("用 户:");
+            optionWordLabel.setFont(centerFont);
+            centerPanel.add(optionWordLabel);
+
+            //选项
+            teaButton = new JRadioButton("宿管");
+            stuButton = new JRadioButton("学生");
+            buttonGroup = new ButtonGroup();
+            buttonGroup.add(teaButton);
+            buttonGroup.add(stuButton);
+
+            centerPanel.add(teaButton);
+            centerPanel.add(stuButton);
+
+            stuButton.addActionListener(stuLoginHandler);
+            stuButton.addActionListener(stuLoginHandler);
+
+
+
+
+
             //用户名标签
             userNameLabel = new JLabel("用户名：");
             userNameLabel.setFont(centerFont);
@@ -69,16 +97,16 @@ public class Login extends JFrame {
             centerPanel.add(enterButton);
 
             //登录的actionListener
-            enterButton.addActionListener(loginHandler);
+            enterButton.addActionListener(stuLoginHandler);
             //key
-            enterButton.addKeyListener(loginHandler);
+            enterButton.addKeyListener(stuLoginHandler);
 
             //注册按钮
             closeButton = new JButton("注册");
 
             centerPanel.add(closeButton);
             //action
-            closeButton.addActionListener(loginHandler);
+            closeButton.addActionListener(stuLoginHandler);
 
             contentPane.add(centerPanel,BorderLayout.CENTER);
 
@@ -135,9 +163,21 @@ public class Login extends JFrame {
                         SpringLayout.EAST,passWordLabel);
                 springLayout.putConstraint(SpringLayout.NORTH,passWordTextField,0,
                         SpringLayout.NORTH,passWordLabel);
+                //选项label
+                springLayout.putConstraint(SpringLayout.EAST,optionWordLabel,0,
+                        SpringLayout.EAST,passWordLabel);
+                springLayout.putConstraint(SpringLayout.NORTH,optionWordLabel,20,
+                        SpringLayout.SOUTH,passWordLabel);
+                //jbutton
+                springLayout.putConstraint(SpringLayout.WEST,teaButton,30,SpringLayout.EAST,optionWordLabel);
+                springLayout.putConstraint(SpringLayout.NORTH,teaButton,0,SpringLayout.NORTH,optionWordLabel);
+
+                springLayout.putConstraint(SpringLayout.WEST,stuButton,20,SpringLayout.EAST,teaButton);
+                springLayout.putConstraint(SpringLayout.NORTH,stuButton,0,SpringLayout.NORTH,teaButton);
+
                 //button
                 springLayout.putConstraint(SpringLayout.WEST,enterButton,50,SpringLayout.WEST,passWordLabel);
-                springLayout.putConstraint(SpringLayout.NORTH,enterButton,20,SpringLayout.SOUTH,passWordLabel);
+                springLayout.putConstraint(SpringLayout.NORTH,enterButton,50,SpringLayout.SOUTH,passWordLabel);
                 //button2
                 springLayout.putConstraint(SpringLayout.WEST,closeButton,50,SpringLayout.EAST,enterButton);
                 springLayout.putConstraint(SpringLayout.NORTH,closeButton,0,SpringLayout.NORTH,enterButton);

@@ -14,10 +14,10 @@ public interface UserService {
 
     /**
      * TODO:登录
-     * @param users
+     * @param id
      * @return
      */
-    Users login(Users users);
+    Users login(String id);
 
 
 }

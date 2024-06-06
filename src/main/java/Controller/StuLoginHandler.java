@@ -1,17 +1,16 @@
 package Controller;
 
-import Service.UserService;
 import Views.Login;
 
 import javax.swing.*;
 import java.awt.event.*;
 
-public class LoginHandler  extends KeyAdapter implements ActionListener {
+public class StuLoginHandler extends KeyAdapter implements ActionListener {
 
    private Login login;
 
 
-    public LoginHandler(Login login) {
+    public StuLoginHandler(Login login) {
         this.login = login;
     }
 
@@ -19,15 +18,33 @@ public class LoginHandler  extends KeyAdapter implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         JButton jButton = (JButton) e.getSource();
         String text = jButton.getText();
-        if("登录".equals(text)){
-            //登录
-            login();
+        JRadioButton jRadioButton = (JRadioButton) e.getSource();
+        String option = jRadioButton.getText();
+
+        if ("宿管".equals(option)){
+            if("登录".equals(text)){
+                //登录
+                login();
+            } else if ("注册".equals(text)) {
 
 
-        } else if ("重置".equals(text)) {
-            login.getUserTextField().setText("");
-            login.getPassWordTextField().setText("");
+
+            }
+
+        } else if ("学生".equals(text)) {
+            if("登录".equals(text)){
+                //登录
+                login();
+
+
+            } else if ("注册".equals(text)) {
+
+
+
+            }
         }
+
+
     }
 
     private void login() {
