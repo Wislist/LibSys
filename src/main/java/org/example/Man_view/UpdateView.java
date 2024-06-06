@@ -20,43 +20,50 @@ public class UpdateView extends JFrame {
     private void initComponents(String name, String gender, String phone, String studentId, int age, String major, int homeId, int bedId) {
         setTitle("修改学生信息");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setSize(600, 300);
+        setSize(400, 400);
         setResizable(false);
         setLocationRelativeTo(null);
-        setLayout(new GridLayout(8, 2, 10, 10));
+
+        // 使用更合适的布局管理器
+        JPanel contentPane = new JPanel(new BorderLayout(10, 10));
+        contentPane.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // 添加边距
+
+        // 创建一个面板用于存放输入框
+        JPanel inputPanel = new JPanel(new GridLayout(8, 2, 10, 10));
 
         // 添加输入框并设置初始值
-        add(new JLabel("姓名:"));
+        inputPanel.add(new JLabel("姓名:"));
         nameField = new JTextField(name);
-        add(nameField);
+        inputPanel.add(nameField);
 
-        add(new JLabel("性别:"));
+        inputPanel.add(new JLabel("性别:"));
         genderField = new JTextField(gender);
-        add(genderField);
+        inputPanel.add(genderField);
 
-        add(new JLabel("电话:"));
+        inputPanel.add(new JLabel("电话:"));
         phoneField = new JTextField(phone);
-        add(phoneField);
+        inputPanel.add(phoneField);
 
-        add(new JLabel("学号:"));
+        inputPanel.add(new JLabel("学号:"));
         studentIdField = new JTextField(studentId);
-        add(studentIdField);
 
-        add(new JLabel("年龄:"));
+        inputPanel.add(studentIdField);
+
+        inputPanel.add(new JLabel("年龄:"));
         ageField = new JTextField(String.valueOf(age));
-        add(ageField);
+        inputPanel.add(ageField);
 
-        add(new JLabel("专业:"));
+        inputPanel.add(new JLabel("专业:"));
         sbField = new JTextField(major);
-        add(sbField);
+        inputPanel.add(sbField);
 
-        add(new JLabel("房号:"));
+        inputPanel.add(new JLabel("房号:"));
         homeidField = new JTextField(String.valueOf(homeId));
-        add(homeidField);
+        inputPanel.add(homeidField);
 
-        add(new JLabel("床号:"));
+        inputPanel.add(new JLabel("床号:"));
         bedidField = new JTextField(String.valueOf(bedId));
-        add(bedidField);
+        inputPanel.add(bedidField);
 
         // 添加按钮
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
@@ -68,7 +75,12 @@ public class UpdateView extends JFrame {
         cancelButton.addActionListener(e -> dispose());
         buttonPanel.add(cancelButton);
 
-        add(buttonPanel, BorderLayout.SOUTH); // 将按钮面板添加到窗口的底部
+        // 将输入面板和按钮面板添加到主面板
+        contentPane.add(inputPanel, BorderLayout.CENTER);
+        contentPane.add(buttonPanel, BorderLayout.SOUTH);
+
+        // 将主面板添加到窗口
+        add(contentPane);
     }
 
     private void updateStudent() {

@@ -27,7 +27,7 @@ public class View extends JFrame {
     private void initComponents() {
         setTitle("宿舍管理系统");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(1000, 400);
+        setSize(600, 400);
         setResizable(false);
         setLocationRelativeTo(null);
         setLayout(new BorderLayout());
@@ -59,6 +59,9 @@ public class View extends JFrame {
         JButton deleteButton = new JButton("删除学生信息");
         deleteButton.addActionListener(e -> deleteUser());
         buttonPanel.add(deleteButton);
+        JButton loadButton = new JButton("刷新");
+        loadButton.addActionListener(e -> loadData());
+        buttonPanel.add(loadButton);
         add(buttonPanel, BorderLayout.SOUTH);
 
         // 添加表格行选择监听器
@@ -133,6 +136,7 @@ public class View extends JFrame {
                 (Integer) table.getValueAt(selectedRow, 6),
                 (Integer) table.getValueAt(selectedRow, 7)
         );
+
         updateView.setVisible(true);
         loadData();
     }
