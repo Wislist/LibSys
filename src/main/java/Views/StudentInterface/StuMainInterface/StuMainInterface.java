@@ -4,7 +4,11 @@
 
 package Views.StudentInterface.StuMainInterface;
 
+import Views.StudentInterface.StuInformation.StuInformation;
+
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.*;
 import javax.swing.*;
 import javax.swing.border.*;
@@ -39,7 +43,7 @@ public class StuMainInterface extends JFrame {
 
             //======== panel2 ========
             {
-                panel2.setBorder(new EtchedBorder());
+                panel2.setBorder(new BevelBorder(BevelBorder.LOWERED));
                 panel2.setLayout(null);
 
                 {
@@ -70,6 +74,14 @@ public class StuMainInterface extends JFrame {
 
                 //---- button2 ----
                 button2.setText(bundle.getString("StuMainInterface.button2.text"));
+                button2.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        StuInformation stuInformation=new StuInformation();
+                        stuInformation.setVisible(true);
+
+                    }
+                });
                 panel3.add(button2);
 
                 //---- button3 ----
