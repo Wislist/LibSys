@@ -8,13 +8,15 @@ new FormModel {
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
 			name: "this"
+			"title": new FormMessage( null, "StuInformation.this.title" )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
 				name: "panel1"
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
 					name: "panel2"
 					add( new FormComponent( "javax.swing.JTextField" ) {
-						name: "textField1"
+						name: "nametext"
 						"editable": false
+						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 5, false )
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 						"x": 128
 						"y": 5
@@ -39,9 +41,10 @@ new FormModel {
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
 					name: "panel3"
 					add( new FormComponent( "javax.swing.JTextField" ) {
-						name: "textField2"
+						name: "sextext"
 						"editable": false
 						"horizontalAlignment": 0
+						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 5, false )
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 						"x": 128
 						"y": 5
@@ -67,9 +70,10 @@ new FormModel {
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
 					name: "panel4"
 					add( new FormComponent( "javax.swing.JTextField" ) {
-						name: "textField3"
+						name: "IDtext"
 						"editable": false
 						"horizontalAlignment": 0
+						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 5, false )
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 						"x": 128
 						"y": 5
@@ -95,8 +99,10 @@ new FormModel {
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
 					name: "panel5"
 					add( new FormComponent( "javax.swing.JTextField" ) {
-						name: "textField4"
+						name: "phonetext"
 						"editable": false
+						"horizontalAlignment": 0
+						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 5, false )
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 						"x": 128
 						"y": 5
@@ -122,9 +128,10 @@ new FormModel {
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
 					name: "panel6"
 					add( new FormComponent( "javax.swing.JTextField" ) {
-						name: "textField5"
+						name: "majortext"
 						"editable": false
 						"horizontalAlignment": 0
+						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 5, false )
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 						"x": 128
 						"y": 5
@@ -150,9 +157,10 @@ new FormModel {
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
 					name: "panel9"
 					add( new FormComponent( "javax.swing.JTextField" ) {
-						name: "textField8"
+						name: "agetext"
 						"editable": false
 						"horizontalAlignment": 0
+						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 5, false )
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 						"x": 105
 						"y": 5
@@ -178,9 +186,10 @@ new FormModel {
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
 					name: "panel7"
 					add( new FormComponent( "javax.swing.JTextField" ) {
-						name: "textField6"
+						name: "dormtext"
 						"editable": false
 						"horizontalAlignment": 0
+						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 5, false )
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 						"x": 128
 						"y": 5
@@ -206,9 +215,10 @@ new FormModel {
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
 					name: "panel10"
 					add( new FormComponent( "javax.swing.JTextField" ) {
-						name: "textField9"
+						name: "bedtext"
 						"editable": false
 						"horizontalAlignment": 0
+						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 5, false )
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 						"x": 105
 						"y": 5
@@ -230,6 +240,13 @@ new FormModel {
 					"height": 45
 					"x": 250
 					"y": 280
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+					name: "panel8"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"y": 330
+					"height": 20
+					"width": 500
 				} )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 0

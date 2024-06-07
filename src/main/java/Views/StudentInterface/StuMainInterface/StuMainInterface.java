@@ -4,7 +4,9 @@
 
 package Views.StudentInterface.StuMainInterface;
 
+import Views.StudentInterface.StuAlter.StuAlter;
 import Views.StudentInterface.StuInformation.StuInformation;
+import Views.StudentInterface.Student;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -17,20 +19,43 @@ import javax.swing.border.*;
  * @author 阿苗
  */
 public class StuMainInterface extends JFrame {
+    Student student;
     public StuMainInterface() {
         initComponents();
     }
+    public StuMainInterface(Student student){
+        this.student=student;
+        initComponents();
 
+    }
+    public void ButtonFunction(Student student){
+        checkbutton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                StuInformation stuInformation=new StuInformation(student);
+                stuInformation.setVisible(true);
+
+            }
+        });
+        alertbutton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                StuAlter stuAlter=new StuAlter(student);
+                stuAlter.setVisible(true);
+            }
+        });
+
+    }
     private void initComponents() {
-        // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
+        // JFormDesigner - Component initialization - DO NOT MODIFY
         ResourceBundle bundle = ResourceBundle.getBundle("student");
         panel1 = new JPanel();
         panel2 = new JPanel();
         panel3 = new JPanel();
         button1 = new JButton();
-        button2 = new JButton();
-        button3 = new JButton();
-        button4 = new JButton();
+        checkbutton = new JButton();
+        alertbutton = new JButton();
+        applybutton = new JButton();
 
         //======== this ========
         setTitle(bundle.getString("StuMainInterface.this.title"));
@@ -43,7 +68,7 @@ public class StuMainInterface extends JFrame {
 
             //======== panel2 ========
             {
-                panel2.setBorder(new BevelBorder(BevelBorder.LOWERED));
+                panel2.setBorder(new EtchedBorder());
                 panel2.setLayout(null);
 
                 {
@@ -72,25 +97,17 @@ public class StuMainInterface extends JFrame {
                 button1.setText(bundle.getString("StuMainInterface.button1.text"));
                 panel3.add(button1);
 
-                //---- button2 ----
-                button2.setText(bundle.getString("StuMainInterface.button2.text"));
-                button2.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        StuInformation stuInformation=new StuInformation();
-                        stuInformation.setVisible(true);
+                //---- checkbutton ----
+                checkbutton.setText(bundle.getString("StuMainInterface.checkbutton.text"));
+                panel3.add(checkbutton);
 
-                    }
-                });
-                panel3.add(button2);
+                //---- alertbutton ----
+                alertbutton.setText(bundle.getString("StuMainInterface.alertbutton.text"));
+                panel3.add(alertbutton);
 
-                //---- button3 ----
-                button3.setText(bundle.getString("StuMainInterface.button3.text"));
-                panel3.add(button3);
-
-                //---- button4 ----
-                button4.setText(bundle.getString("StuMainInterface.button4.text"));
-                panel3.add(button4);
+                //---- applybutton ----
+                applybutton.setText(bundle.getString("StuMainInterface.applybutton.text"));
+                panel3.add(applybutton);
             }
             panel1.add(panel3);
             panel3.setBounds(30, 30, 110, 390);
@@ -114,10 +131,16 @@ public class StuMainInterface extends JFrame {
         pack();
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
+        //按钮功能实现
+        ButtonFunction(student);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     public static void main(String[] args) {
-        new StuMainInterface().setVisible(true);
+//        Student student=new Student
+//                ("张三", "123456", "男","2023001", 20,"13812345678" ,"计算机科学", 101, 1);
+        Student student=new Student("张三", "123456","2023001");
+        new StuMainInterface(student).setVisible(true);
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
@@ -125,8 +148,8 @@ public class StuMainInterface extends JFrame {
     private JPanel panel2;
     private JPanel panel3;
     private JButton button1;
-    private JButton button2;
-    private JButton button3;
-    private JButton button4;
+    private JButton checkbutton;
+    private JButton alertbutton;
+    private JButton applybutton;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 }

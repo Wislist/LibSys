@@ -4,7 +4,14 @@
 
 package Views.StudentInterface.StuInformation;
 
+import Views.Connect;
+import Views.StudentInterface.Student;
+
 import java.awt.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.*;
 import javax.swing.*;
 import javax.swing.border.*;
@@ -13,41 +20,85 @@ import javax.swing.border.*;
  * @author 阿苗
  */
 public class StuInformation extends JFrame {
+    Student student;
     public StuInformation() {
-        initComponents();
+        initComponents(student);
+    }
+    public StuInformation(Student student){
+        this.student=student;
+        initComponents(student);
+    }
+    private void Stuselect(Student student) {
+        Connect connect=new Connect();
+        try(Connection connection=connect.getConnection()) {
+            System.out.println("数据库连接成功");
+            try(Statement stmt = connection.createStatement()) {
+                ResultSet rs = stmt.executeQuery("select * from student where studentid='"+student.StuID+"'");
+                // 处理查询结果
+                while (rs.next()) {
+                    // 获取数据
+                    student.phone = rs.getString("phone");
+                    student.age= rs.getInt("age");
+                    student.sex= rs.getString("gencher");
+                    student.major= rs.getString("subject");
+                    student.dormID=rs.getInt("home");
+                    student.bedID=rs.getInt("bed");
+
+
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("数据库连接失败");
+        }
+    }
+    public void AddStuInformation(Student student){
+        //数据写入
+        nametext.setText(student.name);
+        IDtext.setText(student.StuID);
+        phonetext.setText(student.phone);
+        sextext.setText(student.sex);
+        majortext.setText(student.major);
+        agetext.setText(String.valueOf(student.age));
+        dormtext.setText(String.valueOf(student.dormID));
+        bedtext.setText(String.valueOf(student.bedID));
 
     }
-
-    private void initComponents() {
+    private void initComponents(Student student) {
+        Stuselect(student);
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         ResourceBundle bundle = ResourceBundle.getBundle("student");
         panel1 = new JPanel();
         panel2 = new JPanel();
-        textField1 = new JTextField();
+        nametext = new JTextField();
         label1 = new JLabel();
         panel3 = new JPanel();
-        textField2 = new JTextField();
+        sextext = new JTextField();
         label2 = new JLabel();
         panel4 = new JPanel();
-        textField3 = new JTextField();
+        IDtext = new JTextField();
         label3 = new JLabel();
         panel5 = new JPanel();
-        textField4 = new JTextField();
+        phonetext = new JTextField();
         label4 = new JLabel();
         panel6 = new JPanel();
-        textField5 = new JTextField();
+        majortext = new JTextField();
         label5 = new JLabel();
         panel9 = new JPanel();
-        textField8 = new JTextField();
+        agetext = new JTextField();
         label8 = new JLabel();
         panel7 = new JPanel();
-        textField6 = new JTextField();
+        dormtext = new JTextField();
         label6 = new JLabel();
         panel10 = new JPanel();
-        textField9 = new JTextField();
+        bedtext = new JTextField();
         label9 = new JLabel();
+        panel8 = new JPanel();
 
         //======== this ========
+        setTitle(bundle.getString("StuInformation.this.title"));
         var contentPane = getContentPane();
         contentPane.setLayout(null);
 
@@ -59,10 +110,11 @@ public class StuInformation extends JFrame {
             {
                 panel2.setLayout(null);
 
-                //---- textField1 ----
-                textField1.setEditable(false);
-                panel2.add(textField1);
-                textField1.setBounds(128, 5, 332, 35);
+                //---- nametext ----
+                nametext.setEditable(false);
+                nametext.setFont(nametext.getFont().deriveFont(nametext.getFont().getSize() + 5f));
+                panel2.add(nametext);
+                nametext.setBounds(128, 5, 332, 35);
 
                 //---- label1 ----
                 label1.setText(bundle.getString("StuInformation.label1.text"));
@@ -92,11 +144,12 @@ public class StuInformation extends JFrame {
             {
                 panel3.setLayout(null);
 
-                //---- textField2 ----
-                textField2.setEditable(false);
-                textField2.setHorizontalAlignment(SwingConstants.CENTER);
-                panel3.add(textField2);
-                textField2.setBounds(128, 5, 107, 35);
+                //---- sextext ----
+                sextext.setEditable(false);
+                sextext.setHorizontalAlignment(SwingConstants.CENTER);
+                sextext.setFont(sextext.getFont().deriveFont(sextext.getFont().getSize() + 5f));
+                panel3.add(sextext);
+                sextext.setBounds(128, 5, 107, 35);
 
                 //---- label2 ----
                 label2.setText(bundle.getString("StuInformation.label2.text"));
@@ -126,11 +179,12 @@ public class StuInformation extends JFrame {
             {
                 panel4.setLayout(null);
 
-                //---- textField3 ----
-                textField3.setEditable(false);
-                textField3.setHorizontalAlignment(SwingConstants.CENTER);
-                panel4.add(textField3);
-                textField3.setBounds(128, 5, 332, 35);
+                //---- IDtext ----
+                IDtext.setEditable(false);
+                IDtext.setHorizontalAlignment(SwingConstants.CENTER);
+                IDtext.setFont(IDtext.getFont().deriveFont(IDtext.getFont().getSize() + 5f));
+                panel4.add(IDtext);
+                IDtext.setBounds(128, 5, 332, 35);
 
                 //---- label3 ----
                 label3.setText(bundle.getString("StuInformation.label3.text"));
@@ -160,10 +214,12 @@ public class StuInformation extends JFrame {
             {
                 panel5.setLayout(null);
 
-                //---- textField4 ----
-                textField4.setEditable(false);
-                panel5.add(textField4);
-                textField4.setBounds(128, 5, 332, 35);
+                //---- phonetext ----
+                phonetext.setEditable(false);
+                phonetext.setHorizontalAlignment(SwingConstants.CENTER);
+                phonetext.setFont(phonetext.getFont().deriveFont(phonetext.getFont().getSize() + 5f));
+                panel5.add(phonetext);
+                phonetext.setBounds(128, 5, 332, 35);
 
                 //---- label4 ----
                 label4.setText(bundle.getString("StuInformation.label4.text"));
@@ -193,11 +249,12 @@ public class StuInformation extends JFrame {
             {
                 panel6.setLayout(null);
 
-                //---- textField5 ----
-                textField5.setEditable(false);
-                textField5.setHorizontalAlignment(SwingConstants.CENTER);
-                panel6.add(textField5);
-                textField5.setBounds(128, 5, 332, 35);
+                //---- majortext ----
+                majortext.setEditable(false);
+                majortext.setHorizontalAlignment(SwingConstants.CENTER);
+                majortext.setFont(majortext.getFont().deriveFont(majortext.getFont().getSize() + 5f));
+                panel6.add(majortext);
+                majortext.setBounds(128, 5, 332, 35);
 
                 //---- label5 ----
                 label5.setText(bundle.getString("StuInformation.label5.text"));
@@ -227,11 +284,12 @@ public class StuInformation extends JFrame {
             {
                 panel9.setLayout(null);
 
-                //---- textField8 ----
-                textField8.setEditable(false);
-                textField8.setHorizontalAlignment(SwingConstants.CENTER);
-                panel9.add(textField8);
-                textField8.setBounds(105, 5, 107, 35);
+                //---- agetext ----
+                agetext.setEditable(false);
+                agetext.setHorizontalAlignment(SwingConstants.CENTER);
+                agetext.setFont(agetext.getFont().deriveFont(agetext.getFont().getSize() + 5f));
+                panel9.add(agetext);
+                agetext.setBounds(105, 5, 107, 35);
 
                 //---- label8 ----
                 label8.setText(bundle.getString("StuInformation.label8.text"));
@@ -261,11 +319,12 @@ public class StuInformation extends JFrame {
             {
                 panel7.setLayout(null);
 
-                //---- textField6 ----
-                textField6.setEditable(false);
-                textField6.setHorizontalAlignment(SwingConstants.CENTER);
-                panel7.add(textField6);
-                textField6.setBounds(128, 5, 107, 35);
+                //---- dormtext ----
+                dormtext.setEditable(false);
+                dormtext.setHorizontalAlignment(SwingConstants.CENTER);
+                dormtext.setFont(dormtext.getFont().deriveFont(dormtext.getFont().getSize() + 5f));
+                panel7.add(dormtext);
+                dormtext.setBounds(128, 5, 107, 35);
 
                 //---- label6 ----
                 label6.setText(bundle.getString("StuInformation.label6.text"));
@@ -295,11 +354,12 @@ public class StuInformation extends JFrame {
             {
                 panel10.setLayout(null);
 
-                //---- textField9 ----
-                textField9.setEditable(false);
-                textField9.setHorizontalAlignment(SwingConstants.CENTER);
-                panel10.add(textField9);
-                textField9.setBounds(105, 5, 107, 35);
+                //---- bedtext ----
+                bedtext.setEditable(false);
+                bedtext.setHorizontalAlignment(SwingConstants.CENTER);
+                bedtext.setFont(bedtext.getFont().deriveFont(bedtext.getFont().getSize() + 5f));
+                panel10.add(bedtext);
+                bedtext.setBounds(105, 5, 107, 35);
 
                 //---- label9 ----
                 label9.setText(bundle.getString("StuInformation.label9.text"));
@@ -324,6 +384,28 @@ public class StuInformation extends JFrame {
             }
             panel1.add(panel10);
             panel10.setBounds(250, 280, 250, 45);
+
+            //======== panel8 ========
+            {
+                panel8.setLayout(null);
+
+                {
+                    // compute preferred size
+                    Dimension preferredSize = new Dimension();
+                    for(int i = 0; i < panel8.getComponentCount(); i++) {
+                        Rectangle bounds = panel8.getComponent(i).getBounds();
+                        preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
+                        preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
+                    }
+                    Insets insets = panel8.getInsets();
+                    preferredSize.width += insets.right;
+                    preferredSize.height += insets.bottom;
+                    panel8.setMinimumSize(preferredSize);
+                    panel8.setPreferredSize(preferredSize);
+                }
+            }
+            panel1.add(panel8);
+            panel8.setBounds(0, 330, 500, 20);
 
             {
                 // compute preferred size
@@ -360,36 +442,40 @@ public class StuInformation extends JFrame {
         pack();
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
+        //数据写入
+        AddStuInformation(student);
+
     }
 
     public static void main(String[] args) {
-        new StuInformation().setVisible(true);
+//        new StuInformation().setVisible(true);
     }
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
     private JPanel panel1;
     private JPanel panel2;
-    private JTextField textField1;
+    private JTextField nametext;
     private JLabel label1;
     private JPanel panel3;
-    private JTextField textField2;
+    private JTextField sextext;
     private JLabel label2;
     private JPanel panel4;
-    private JTextField textField3;
+    private JTextField IDtext;
     private JLabel label3;
     private JPanel panel5;
-    private JTextField textField4;
+    private JTextField phonetext;
     private JLabel label4;
     private JPanel panel6;
-    private JTextField textField5;
+    private JTextField majortext;
     private JLabel label5;
     private JPanel panel9;
-    private JTextField textField8;
+    private JTextField agetext;
     private JLabel label8;
     private JPanel panel7;
-    private JTextField textField6;
+    private JTextField dormtext;
     private JLabel label6;
     private JPanel panel10;
-    private JTextField textField9;
+    private JTextField bedtext;
     private JLabel label9;
+    private JPanel panel8;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 }
