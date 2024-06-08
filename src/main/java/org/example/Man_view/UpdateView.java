@@ -11,13 +11,14 @@ import java.sql.SQLException;
 public class UpdateView extends JFrame {
     private JTextField nameField, genderField, phoneField, studentIdField, ageField, sbField, homeidField, bedidField;
     private JButton updateButton, cancelButton;
+    private JTextField passwordField;
 
     // 添加构造函数来接收表格数据
-    public UpdateView(String name, String gender, String phone, String studentId, int age, String major, int homeId, int bedId) {
-        initComponents(name, gender, phone, studentId, age, major, homeId, bedId);
+    public UpdateView(String name,String password, String gender, String phone, String studentId, int age, String major, int homeId, int bedId) {
+        initComponents(name, password, gender, phone, studentId, age, major, homeId, bedId);
     }
 
-    private void initComponents(String name, String gender, String phone, String studentId, int age, String major, int homeId, int bedId) {
+    private void initComponents(String name,String password, String gender, String phone, String studentId, int age, String major, int homeId, int bedId) {
         setTitle("修改学生信息");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(400, 400);
@@ -29,12 +30,16 @@ public class UpdateView extends JFrame {
         contentPane.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // 添加边距
 
         // 创建一个面板用于存放输入框
-        JPanel inputPanel = new JPanel(new GridLayout(8, 2, 10, 10));
+        JPanel inputPanel = new JPanel(new GridLayout(9, 2, 10, 10));
 
         // 添加输入框并设置初始值
         inputPanel.add(new JLabel("姓名:"));
         nameField = new JTextField(name);
         inputPanel.add(nameField);
+
+        inputPanel.add(new JLabel("密码:"));
+        passwordField = new JTextField(gender);
+        inputPanel.add(passwordField);
 
         inputPanel.add(new JLabel("性别:"));
         genderField = new JTextField(gender);
@@ -46,7 +51,7 @@ public class UpdateView extends JFrame {
 
         inputPanel.add(new JLabel("学号:"));
         studentIdField = new JTextField(studentId);
-
+        studentIdField.setEditable(false);
         inputPanel.add(studentIdField);
 
         inputPanel.add(new JLabel("年龄:"));
@@ -87,26 +92,29 @@ public class UpdateView extends JFrame {
         try {
             // 获取输入框中的值
             String name = nameField.getText();
+            String password = passwordField.getText();
             String gender = genderField.getText();
             String phone = phoneField.getText();
             String studentId = studentIdField.getText();
             int age = Integer.parseInt(ageField.getText());
             String major = sbField.getText();
-            String homeId = homeidField.getText();
-            String bedId = bedidField.getText();
+            int homeId = Integer.parseInt(homeidField.getText());
+            int bedId = Integer.parseInt(bedidField.getText());
 
             // 更新数据库
             try (Connection connection = Connect.getConnection();
                  PreparedStatement statement = connection.prepareStatement(
-                         "UPDATE student SET name = ?, gencher = ?, phone = ?, age = ?, subject = ?, home = ?, bed = ? WHERE studentid = ?")) {
+                         "UPDATE student SET name = ?,password=?, gender = ?, phone = ?, age = ?, subject = ?, home = ?, bed = ? where studentid = ?")) {
                 statement.setString(1, name);
-                statement.setString(2, gender);
-                statement.setString(3, phone);
-                statement.setInt(4, age);
-                statement.setString(5, major);
-                statement.setString(6, homeId);
-                statement.setString(7, bedId);
-                statement.setString(8, studentId);
+                statement.setString(2,password);
+                statement.setString(3, gender);
+                statement.setString(4, phone);
+                statement.setInt(5, age);
+                statement.setString(6, major);
+                statement.setInt(7, homeId);
+                statement.setInt(8, bedId);
+                statement.setString(9, studentId);
+
                 statement.executeUpdate();
             }
 
