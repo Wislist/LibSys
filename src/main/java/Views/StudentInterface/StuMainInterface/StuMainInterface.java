@@ -4,6 +4,7 @@
 
 package Views.StudentInterface.StuMainInterface;
 
+import Views.StudentInterface.AlterPanel.AlterPanel;
 import Views.StudentInterface.StuAlter.StuAlter;
 import Views.StudentInterface.StuInformation.StuInformation;
 import Views.StudentInterface.Student;
@@ -40,8 +41,9 @@ public class StuMainInterface extends JFrame {
         alertbutton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                StuAlter stuAlter=new StuAlter(student);
-                stuAlter.setVisible(true);
+
+                AlterPanel alterPanel=new AlterPanel(student);
+                alterPanel.setVisible(true);
             }
         });
 
@@ -131,6 +133,7 @@ public class StuMainInterface extends JFrame {
         pack();
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
+
         //按钮功能实现
         ButtonFunction(student);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

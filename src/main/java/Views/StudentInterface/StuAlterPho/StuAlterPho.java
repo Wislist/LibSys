@@ -1,8 +1,8 @@
 /*
- * Created by JFormDesigner on Fri Jun 07 18:43:48 CST 2024
+ * Created by JFormDesigner on Sat Jun 08 15:32:57 CST 2024
  */
 
-package Views.StudentInterface.StuAlter;
+package Views.StudentInterface.StuAlterPho;
 
 import Views.Connect;
 import Views.StudentInterface.Student;
@@ -19,12 +19,12 @@ import javax.swing.border.*;
 /**
  * @author 阿苗
  */
-public class StuAlter extends JFrame {
+public class StuAlterPho extends JFrame {
     Student student;
-    public StuAlter() {
+    public StuAlterPho() {
         initComponents(student);
     }
-    public StuAlter(Student student){
+    public StuAlterPho(Student student) {
         this.student=student;
         initComponents(student);
     }
@@ -40,6 +40,7 @@ public class StuAlter extends JFrame {
                     student.name = rs.getString("name");
                     student.StuID = rs.getString("studentid");
                     student.password = rs.getString("password");
+                    student.phone=rs.getString("phone");
                 }
             }catch (SQLException e){
                 e.printStackTrace();
@@ -56,23 +57,23 @@ public class StuAlter extends JFrame {
     public void StuAlterFunction(Student student){
         Connect connect=new Connect();
         String sql="update student \n" +
-                "set password=?\n" +
+                "set phone=?\n" +
                 "where studentid=?;";
-        String oldpassword=oldPasswordtext.getText().toString();
-        String newpassword= newPasswordtext.getText().toString();
-        if (oldpassword.equals(student.password)){
-            if (!newpassword.equals("")){
+        String oldPho=oldPhotext.getText().toString();
+        String newPho= newPhotext.getText().toString();
+        if (oldPho.equals(student.phone)){
+            if (!newPho.equals("")&&newPho.length()==11){
                 try(Connection connection=connect.getConnection();
                     PreparedStatement pstmt =connection.prepareStatement(sql)) {
 
                     System.out.println("数据库连接成功");
                     //修改
-                    pstmt.setString(1, newpassword);
+                    pstmt.setString(1, newPho);
                     pstmt.setString(2,student.StuID);
                     int result = pstmt.executeUpdate();
                     if (result > 0) {
-                        System.out.println("密码修改成功");
-                        new  dialog("密码修改成功","提示");
+                        System.out.println("电话号码修改成功");
+                        new  dialog("电话号码修改成功","提示");
                         dispose();
                     }
                 }catch (SQLException e) {
@@ -81,17 +82,16 @@ public class StuAlter extends JFrame {
                 }
             }
             else {
-                System.out.println("请输入新密码");
-                new dialog("请输入新密码","警告");
+                System.out.println("请输入正确的新电话号码");
+                new dialog("请输入正确的新电话号码","警告");
             }
         }
         else{
-            System.out.println("原密码错误");
-            new dialog("原密码错误","警告");
+            System.out.println("原电话号码错误");
+            new dialog("原电话号码错误","警告");
         }
 
     }
-
     private void initComponents(Student student) {
         StuSelect(student);
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
@@ -100,10 +100,10 @@ public class StuAlter extends JFrame {
         nametext = new JTextField();
         label1 = new JLabel();
         panel3 = new JPanel();
-        oldPasswordtext = new JTextField();
+        oldPhotext = new JTextField();
         label2 = new JLabel();
         panel4 = new JPanel();
-        newPasswordtext = new JTextField();
+        newPhotext = new JTextField();
         label3 = new JLabel();
         Alterbutton = new JButton();
         panel1 = new JPanel();
@@ -122,10 +122,10 @@ public class StuAlter extends JFrame {
             //---- nametext ----
             nametext.setEditable(false);
             panel2.add(nametext);
-            nametext.setBounds(128, 5, 200, 35);
+            nametext.setBounds(150, 5, 200, 35);
 
             //---- label1 ----
-            label1.setText(bundle.getString("StuAlter.label1.text"));
+            label1.setText(bundle.getString("StuAlterPho.label1.text"));
             label1.setFont(label1.getFont().deriveFont(label1.getFont().getSize() + 6f));
             panel2.add(label1);
             label1.setBounds(25, 5, 80, 35);
@@ -151,14 +151,14 @@ public class StuAlter extends JFrame {
         //======== panel3 ========
         {
             panel3.setLayout(null);
-            panel3.add(oldPasswordtext);
-            oldPasswordtext.setBounds(128, 5, 200, 35);
+            panel3.add(oldPhotext);
+            oldPhotext.setBounds(150, 5, 200, 35);
 
             //---- label2 ----
-            label2.setText(bundle.getString("StuAlter.label2.text"));
+            label2.setText(bundle.getString("StuAlterPho.label2.text"));
             label2.setFont(label2.getFont().deriveFont(label2.getFont().getSize() + 6f));
             panel3.add(label2);
-            label2.setBounds(25, 5, 80, 35);
+            label2.setBounds(25, 5, 100, 35);
 
             {
                 // compute preferred size
@@ -181,14 +181,14 @@ public class StuAlter extends JFrame {
         //======== panel4 ========
         {
             panel4.setLayout(null);
-            panel4.add(newPasswordtext);
-            newPasswordtext.setBounds(128, 5, 200, 35);
+            panel4.add(newPhotext);
+            newPhotext.setBounds(150, 5, 200, 35);
 
             //---- label3 ----
-            label3.setText(bundle.getString("StuAlter.label3.text"));
+            label3.setText(bundle.getString("StuAlterPho.label3.text"));
             label3.setFont(label3.getFont().deriveFont(label3.getFont().getSize() + 6f));
             panel4.add(label3);
-            label3.setBounds(25, 5, 80, 35);
+            label3.setBounds(25, 5, 100, 35);
 
             {
                 // compute preferred size
@@ -209,7 +209,7 @@ public class StuAlter extends JFrame {
         panel4.setBounds(0, 200, 400, 45);
 
         //---- Alterbutton ----
-        Alterbutton.setText(bundle.getString("StuAlter.Alterbutton.text"));
+        Alterbutton.setText(bundle.getString("StuAlterPho.Alterbutton.text"));
         contentPane.add(Alterbutton);
         Alterbutton.setBounds(120, 270, 103, 40);
 
@@ -242,10 +242,10 @@ public class StuAlter extends JFrame {
             //---- IDtext ----
             IDtext.setEditable(false);
             panel5.add(IDtext);
-            IDtext.setBounds(128, 5, 200, 35);
+            IDtext.setBounds(150, 5, 200, 35);
 
             //---- label4 ----
-            label4.setText(bundle.getString("StuAlter.label4.text"));
+            label4.setText(bundle.getString("StuAlterPho.label4.text"));
             label4.setFont(label4.getFont().deriveFont(label4.getFont().getSize() + 6f));
             panel5.add(label4);
             label4.setBounds(25, 5, 80, 35);
@@ -294,21 +294,17 @@ public class StuAlter extends JFrame {
 //                dispose();
             }
         });
-
     }
 
-    public static void main(String[] args) {
-        new StuAlter().setVisible(true);
-    }
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
     private JPanel panel2;
     private JTextField nametext;
     private JLabel label1;
     private JPanel panel3;
-    private JTextField oldPasswordtext;
+    private JTextField oldPhotext;
     private JLabel label2;
     private JPanel panel4;
-    private JTextField newPasswordtext;
+    private JTextField newPhotext;
     private JLabel label3;
     private JButton Alterbutton;
     private JPanel panel1;
