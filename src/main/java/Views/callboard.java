@@ -1,11 +1,16 @@
 package Views;
 
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 /**
  * @author pc
@@ -29,6 +34,59 @@ public class callboard extends JFrame {
             e.printStackTrace();
         }
     }
+    // 修改 queryNoticesFromDatabase 方法，添加一个参数 time
+    private String[][] queryNoticesFromDatabase(String time) {
+        // 这里需要根据你的数据库配置进行修改
+        String url = "jdbc:mysql://localhost:3306/student";
+        String user = "root";
+        String password = "root";
+
+        List<String[]> notices = new ArrayList<>();
+
+        try {
+            Connection connection = DriverManager.getConnection(url, user, password);
+            String sql = "SELECT date, annText FROM announce WHERE date = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, time);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                String date = resultSet.getString("date");
+                String annText = resultSet.getString("annText");
+                notices.add(new String[]{date, annText});
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return notices.toArray(new String[0][]);
+    }
+    private String[][] queryNoticesFromDatabase() {
+        // 这里需要根据你的数据库配置进行修改
+        String url = "jdbc:mysql://localhost:3306/student";
+        String user = "root";
+        String password = "root";
+
+        List<String[]> notices = new ArrayList<>();
+
+        try {
+            Connection connection = DriverManager.getConnection(url, user, password);
+            String sql = "SELECT date, annText FROM announce";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                String date = resultSet.getString("date");
+                String annText = resultSet.getString("annText");
+                notices.add(new String[]{date, annText});
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return notices.toArray(new String[0][]);
+    }
+
     public callboard() {
         //窗体图标
         setTitle("学生宿舍管理");
@@ -45,12 +103,27 @@ public class callboard extends JFrame {
         return noticeCreateTime;
     }
 
+    private void updateTableData() {
+        // 查询数据库，获取通告内容
+        String[][] notices = queryNoticesFromDatabase();
+
+        // 清空表格数据
+        DefaultTableModel tableModel = (DefaultTableModel) table1.getModel();
+        tableModel.setRowCount(0);
+
+        // 添加新的数据到表格中
+        for (String[] notice : notices) {
+            tableModel.addRow(notice);
+        }
+    }
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         addBtn = new JButton();
+
         deleteBtn = new JButton();
         editText = new JTextField();
         scrollPane1 = new JScrollPane();
+        JTextField editText = new JTextField();
         table1 = new JTable();
         label1 = new JLabel();
         label2 = new JLabel();
@@ -58,6 +131,15 @@ public class callboard extends JFrame {
         label3 = new JLabel();
         selectBtn = new JButton();
 
+
+        // 创建一个定时器，每隔5秒执行一次
+        Timer timer = new Timer(5000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                updateTableData();
+            }
+        });
+        timer.start(); // 启动定时器
         //======== this ========
         var contentPane = getContentPane();
         contentPane.setLayout(null);
@@ -75,12 +157,17 @@ public class callboard extends JFrame {
             }
         });
 
-        //---- deleteBtn ----
-        deleteBtn.setText("\u5220\u9664\u901a\u544a");
-        contentPane.add(deleteBtn);
-        deleteBtn.setBounds(new Rectangle(new Point(380, 310), deleteBtn.getPreferredSize()));
-        contentPane.add(editText);
-        editText.setBounds(245, 190, 220, 100);
+        // 创建一个DefaultTableModel对象，并设置给table1
+        DefaultTableModel tableModel = new DefaultTableModel();
+        table1.setModel(tableModel);
+
+        // 添加列名
+        tableModel.addColumn("创建时间");
+        tableModel.addColumn("公告内容");
+
+        // 添加数据（这里只是示例数据，你可以根据需要添加实际数据）
+        tableModel.addRow(new Object[]{"示例公告1", "2022-01-01"});
+        tableModel.addRow(new Object[]{"示例公告2", "2022-01-02"});
 
         //======== scrollPane1 ========
         {
@@ -89,6 +176,9 @@ public class callboard extends JFrame {
         contentPane.add(scrollPane1);
         scrollPane1.setBounds(250, 40, 320, 100);
 
+        //---- editText ----
+        contentPane.add(editText);
+        editText.setBounds(250, 195,190, 100);
         //---- label1 ----
         label1.setText("\u901a\u544a\u5185\u5bb9");
         contentPane.add(label1);
@@ -110,12 +200,27 @@ public class callboard extends JFrame {
         selectBtn.setText("\u67e5\u8be2\u901a\u544a");
         contentPane.add(selectBtn);
         selectBtn.setBounds(new Rectangle(new Point(435, 155), selectBtn.getPreferredSize()));
+        // 修改 selectBtn 的 actionPerformed 方法
+        selectBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String noticeCreateTime = createTime.getText();
+                String[][] notices = queryNoticesFromDatabase(noticeCreateTime);
+                if (notices.length > 0) {
+                    editText.setText(notices[0][1]);
+                } else {
+                    editText.setText("");
+                }
+            }
+        });
+
 
         contentPane.setPreferredSize(new Dimension(600, 400));
         pack();
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
     }
+
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
     private JButton addBtn;
