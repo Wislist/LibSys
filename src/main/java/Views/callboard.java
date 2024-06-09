@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -60,6 +62,41 @@ public class callboard extends JFrame {
         }
 
         return notices.toArray(new String[0][]);
+    }
+    private boolean isAnnounceExists(String date, String annText) {
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/student", "root", "root");
+            String query = "SELECT * FROM announce WHERE date = ? AND annText = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, date);
+            preparedStatement.setString(2, annText);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
+
+    private void deleteAnnounce(String date, String annText) {
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/student", "root", "root");
+            String deleteQuery = "DELETE FROM announce WHERE date = ? AND annText = ?";
+            PreparedStatement deleteStatement = connection.prepareStatement(deleteQuery);
+            deleteStatement.setString(1, date);
+            deleteStatement.setString(2, annText);
+            deleteStatement.executeUpdate();
+            Component contentPane = null;
+            JOptionPane.showMessageDialog(contentPane, "删除成功！");
+            connection.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
     private String[][] queryNoticesFromDatabase() {
         // 这里需要根据你的数据库配置进行修改
@@ -145,7 +182,7 @@ public class callboard extends JFrame {
         contentPane.setLayout(null);
 
         //---- addBtn ----
-        addBtn.setText("\u53d1\u5e03\u901a\u544a");
+        addBtn.setText("发布通告");
         contentPane.add(addBtn);
         addBtn.setBounds(new Rectangle(new Point(250, 310), addBtn.getPreferredSize()));
         addBtn.addActionListener(new ActionListener() {
@@ -160,6 +197,23 @@ public class callboard extends JFrame {
         // 创建一个DefaultTableModel对象，并设置给table1
         DefaultTableModel tableModel = new DefaultTableModel();
         table1.setModel(tableModel);
+
+        deleteBtn.setText("删除通告");
+        contentPane.add(deleteBtn);
+        deleteBtn.setBounds(new Rectangle(new Point(350, 310), addBtn.getPreferredSize()));
+        deleteBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String date = createTime.getText(); // 获取输入的日期
+                String annText = editText.getText(); // 获取输入的通告内容
+
+                if (isAnnounceExists(date, annText)) {
+                    deleteAnnounce(date, annText);
+                } else {
+                    JOptionPane.showMessageDialog(contentPane, "未找到匹配的通告记录！");
+                }
+            }
+        });
 
         // 添加列名
         tableModel.addColumn("创建时间");
