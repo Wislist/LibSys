@@ -5,10 +5,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
-@Data
 @NoArgsConstructor
-public class Users {
-    private String id;
-    private String users;
+@Data
+public class StudentLogin {
+    private String name;
     private String password;
+    private String StuID;
 }

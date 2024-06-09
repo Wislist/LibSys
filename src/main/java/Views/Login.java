@@ -1,17 +1,24 @@
 package Views;
 
-import Controller.StuLoginHandler;
+import Pojo.AdminLogin;
+import Pojo.StudentLogin;
+import Service.AdminService;
+import Service.Impl.AdminServiceImpl;
+import Service.Impl.StuServiceImpl;
+import Service.StuService;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.net.URL;
 
 public class Login extends JFrame {
 
 
-        JPanel root,centerPanel;
+        JPanel centerPanel;
         JLabel userNameLabel,passWordLabel,topWordLabel,optionWordLabel;
         @Getter@Setter
         JTextField userTextField,passWordTextField;
@@ -23,14 +30,12 @@ public class Login extends JFrame {
 
         SpringLayout springLayout;
 
-        StuLoginHandler stuLoginHandler;
+
 
 
     public Login() {
 
             Container contentPane = getContentPane();
-            //将LonginHandlder引入
-            stuLoginHandler = new StuLoginHandler(this);
 
             springLayout = new SpringLayout();
             centerPanel = new JPanel(springLayout);
@@ -64,12 +69,6 @@ public class Login extends JFrame {
             centerPanel.add(teaButton);
             centerPanel.add(stuButton);
 
-            stuButton.addActionListener(stuLoginHandler);
-            stuButton.addActionListener(stuLoginHandler);
-
-
-
-
 
             //用户名标签
             userNameLabel = new JLabel("用户名：");
@@ -96,23 +95,22 @@ public class Login extends JFrame {
 
             centerPanel.add(enterButton);
 
-            //登录的actionListener
-            enterButton.addActionListener(stuLoginHandler);
-            //key
-            enterButton.addKeyListener(stuLoginHandler);
+
+
 
             //注册按钮
             closeButton = new JButton("注册");
 
             centerPanel.add(closeButton);
-            //action
-            closeButton.addActionListener(stuLoginHandler);
+
 
             contentPane.add(centerPanel,BorderLayout.CENTER);
 
 
             //TODO:布局设置
             layoutCenter();
+            //TODO:button
+            ButtonAction();
 
             /**
              * TODO:设置窗口风格
@@ -182,6 +180,108 @@ public class Login extends JFrame {
                 springLayout.putConstraint(SpringLayout.WEST,closeButton,50,SpringLayout.EAST,enterButton);
                 springLayout.putConstraint(SpringLayout.NORTH,closeButton,0,SpringLayout.NORTH,enterButton);
         }
+
+        /**
+         * 按钮功能实现
+         * @param
+         */
+        private String text,option;
+
+        public void ButtonAction(){
+
+                enterButton.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                                JButton jButton = (JButton) e.getSource();
+                                text = jButton.getText();
+                                Login();
+                                System.out.println(text);
+                        }
+
+
+                });
+                closeButton.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                                JButton jButton = (JButton) e.getSource();
+                                String text = jButton.getText();
+                                new RegisterView();
+                                System.out.println(text);
+                        }
+                });
+
+                teaButton.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                                JRadioButton jRadioButton = (JRadioButton) e.getSource();
+                                option = jRadioButton.getText();
+                                if(option == null) {
+                                        JOptionPane.showMessageDialog(null,"未选择用户","错误",JOptionPane.ERROR_MESSAGE);
+                                }
+                                System.out.println(option);
+                        }
+                });
+
+                stuButton.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                                JRadioButton jRadioButton = (JRadioButton) e.getSource();
+                                option = jRadioButton.getText();
+                                System.out.println(option);
+                        }
+                });
+
+
+
+
+        }
+
+
+
+
+
+        private void Login() {
+                String id = getUserTextField().getText();
+                String pwd = getPassWordTextField().getText();
+                System.out.println(id + " " + pwd);
+                //校验
+                if (id == null || "".equals(id) ||
+                        pwd == null || "".equals(pwd.trim())){
+                        JOptionPane.showMessageDialog(null,"用户id和密码必填","错误",JOptionPane.ERROR_MESSAGE);
+                }
+
+                //查询db
+                if ("宿管".equals(option)){
+                        AdminService adminService = new AdminServiceImpl();
+                        AdminLogin admin = new AdminLogin();
+                        admin.setId(id);
+                        admin.setPassword(pwd);
+                        boolean flag = adminService.findById(admin);
+                        if(flag){
+                                //跳转到宿管主页
+
+                                dispose();
+                        }else {
+                                JOptionPane.showMessageDialog(null,"宿管用户名密码错误！");
+                        }
+                } else if ("学生".equals(option)) {
+                        StuService stuService = new StuServiceImpl();
+                        StudentLogin students = new StudentLogin();
+                        students.setStuID(id);
+                        students.setPassword(pwd);
+                        boolean flag = stuService.findById(students);
+                        if(flag){
+                                //跳转到学生主页
+
+                                dispose();
+                        }else {
+                                JOptionPane.showMessageDialog(null,"学生用户名密码错误！");
+                        }
+                }
+
+
+        }
+
 
 
         public static void main(String[] args) {
