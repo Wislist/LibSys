@@ -4,12 +4,31 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
+import java.sql.*;
 import javax.swing.*;
 
 /**
  * @author pc
  */
 public class callboard extends JFrame {
+    private void insertNotice(String noticeContent, String noticeCreateTime) {
+        // 这里需要根据你的数据库配置进行修改
+        String url = "jdbc:mysql://localhost:3306/student";
+        String user = "root";
+        String password = "root";
+
+        try {
+            Connection connection = DriverManager.getConnection(url, user, password);
+            String sql = "INSERT INTO announce (date, annText) VALUES (?, ?)";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, noticeCreateTime);
+            preparedStatement.setString(2, noticeContent);
+            preparedStatement.executeUpdate();
+            System.out.println("通告已成功插入到数据库中");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
     public callboard() {
         //窗体图标
         setTitle("学生宿舍管理");
@@ -17,10 +36,14 @@ public class callboard extends JFrame {
         Image image = new ImageIcon(resource).getImage();
         setIconImage(image);
         initComponents();
-
     }
 
-    
+    public String sendContent(String noticeContent){
+        return noticeContent;
+    }
+    public String sendCreateTime(String noticeCreateTime){
+        return noticeCreateTime;
+    }
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
@@ -31,7 +54,7 @@ public class callboard extends JFrame {
         table1 = new JTable();
         label1 = new JLabel();
         label2 = new JLabel();
-        textField1 = new JTextField();
+        createTime = new JTextField();
         label3 = new JLabel();
         selectBtn = new JButton();
 
@@ -46,12 +69,9 @@ public class callboard extends JFrame {
         addBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // 在这里实现发送数据的逻辑
                 String noticeContent = editText.getText();
-                String noticeCreateTime = textField1.getText();
-                System.out.println("这里数据获取成功");
-                System.out.println("发布通告内容：" + noticeContent);
-                System.out.println("发布时间：" + noticeCreateTime);
+                String noticeCreateTime = createTime.getText();
+                insertNotice(noticeContent, noticeCreateTime);
             }
         });
 
@@ -78,8 +98,8 @@ public class callboard extends JFrame {
         label2.setText("\u901a\u544a\u521b\u5efa\u65f6\u95f4");
         contentPane.add(label2);
         label2.setBounds(135, 150, 80, 35);
-        contentPane.add(textField1);
-        textField1.setBounds(250, 155, 165, 25);
+        contentPane.add(createTime);
+        createTime.setBounds(250, 155, 165, 25);
 
         //---- label3 ----
         label3.setText("\u901a\u544a");
@@ -105,7 +125,7 @@ public class callboard extends JFrame {
     private JTable table1;
     private JLabel label1;
     private JLabel label2;
-    private JTextField textField1;
+    private JTextField createTime;
     private JLabel label3;
     private JButton selectBtn;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on

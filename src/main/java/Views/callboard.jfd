@@ -59,7 +59,7 @@ new FormModel {
 				"width": 80
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
-				name: "textField1"
+				name: "createTime"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 250
 				"y": 155
