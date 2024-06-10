@@ -48,7 +48,7 @@ public class JdbcUtils {
         }
     }
 
-    /**关闭链接
+    /** 链接
      * @return
      */
     public Connection getConnection() {
@@ -60,5 +60,18 @@ public class JdbcUtils {
         }
         return conn;
     }
+
+    //用连接池 不写了
+
+//    public void closeConnection(Connection connection){
+//        if(connection != null){
+//            try{
+//                connection.close();
+//
+//            }catch (SQLException e){
+//                e.printStackTrace();
+//            }
+//        }
+//    }
 
 }
