@@ -5,9 +5,8 @@
 package Views.StudentInterface.StuMainInterface;
 
 import Views.StudentInterface.AlterPanel.AlterPanel;
-import Views.StudentInterface.StuAlter.StuAlter;
 import Views.StudentInterface.StuInformation.StuInformation;
-import Views.StudentInterface.Student;
+import Pojo.Student;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;

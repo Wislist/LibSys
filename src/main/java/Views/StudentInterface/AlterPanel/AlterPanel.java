@@ -6,7 +6,7 @@ package Views.StudentInterface.AlterPanel;
 
 import Views.StudentInterface.StuAlter.StuAlter;
 import Views.StudentInterface.StuAlterPho.StuAlterPho;
-import Views.StudentInterface.Student;
+import Pojo.Student;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;

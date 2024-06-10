@@ -1,4 +1,4 @@
-package Views.StudentInterface;
+package Pojo;
 
 public class Student {
     public String name;

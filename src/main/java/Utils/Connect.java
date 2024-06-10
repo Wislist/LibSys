@@ -1,4 +1,4 @@
-package Views;
+package Utils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -9,7 +9,7 @@ public class Connect {
     private static String driverName="com.mysql.cj.jdbc.Driver";
     private static String url = "jdbc:mysql://localhost:3306/students";
     private static String userName = "root";
-    private static String password = "sr20040521";
+    private static String password = "root";
     private Connection conn;
     private Statement stmt;
 

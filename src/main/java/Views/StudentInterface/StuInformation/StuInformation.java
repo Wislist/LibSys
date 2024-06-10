@@ -4,8 +4,8 @@
 
 package Views.StudentInterface.StuInformation;
 
-import Views.Connect;
-import Views.StudentInterface.Student;
+import Utils.Connect;
+import Pojo.Student;
 
 import java.awt.*;
 import java.sql.Connection;
@@ -14,7 +14,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.*;
 import javax.swing.*;
-import javax.swing.border.*;
 
 /**
  * @author 阿苗

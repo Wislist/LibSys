@@ -4,8 +4,8 @@
 
 package Views.StudentInterface.StuAlterPho;
 
-import Views.Connect;
-import Views.StudentInterface.Student;
+import Utils.Connect;
+import Pojo.Student;
 import Views.StudentInterface.dialog;
 
 import java.awt.*;
@@ -14,7 +14,6 @@ import java.awt.event.ActionListener;
 import java.sql.*;
 import java.util.*;
 import javax.swing.*;
-import javax.swing.border.*;
 
 /**
  * @author 阿苗
