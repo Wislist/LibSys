@@ -15,7 +15,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
 
-public class Login extends JFrame {
+public class LoginView extends JFrame {
 
 
         JPanel centerPanel;
@@ -33,7 +33,7 @@ public class Login extends JFrame {
 
 
 
-    public Login() {
+    public LoginView() {
 
             Container contentPane = getContentPane();
 
@@ -118,7 +118,7 @@ public class Login extends JFrame {
 
             //窗体图标
             setTitle("学生宿舍管理");
-            URL resource = Login.class.getClassLoader().getResource("Logo.png");
+            URL resource = LoginView.class.getClassLoader().getResource("Logo.png");
             Image image = new ImageIcon(resource).getImage();
             setIconImage(image);
 
@@ -205,6 +205,7 @@ public class Login extends JFrame {
                         public void actionPerformed(ActionEvent e) {
                                 JButton jButton = (JButton) e.getSource();
                                 String text = jButton.getText();
+                                //到RegisterView
                                 new RegisterView();
                                 System.out.println(text);
                         }
@@ -281,12 +282,5 @@ public class Login extends JFrame {
 
 
         }
-
-
-
-        public static void main(String[] args) {
-
-        new Login();
-    }
 
 }

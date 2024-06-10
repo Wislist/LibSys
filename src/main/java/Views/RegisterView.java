@@ -15,7 +15,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 public class RegisterView {
-    Login login;
+    LoginView login;
     public RegisterView() {
         JRadioButton teaButton = new JRadioButton("宿管");
         JRadioButton stuButton = new JRadioButton("学生");
@@ -110,7 +110,4 @@ public class RegisterView {
         });
     }
 
-    public static void main(String[] args) {
-        new RegisterView();
-    }
 }
