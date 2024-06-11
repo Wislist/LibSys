@@ -4,10 +4,12 @@
 
 package Views.StudentInterface.StuMainInterface;
 
+
 import Views.StudentInterface.AlterPanel.AlterPanel;
 import Views.StudentInterface.StuAlter.StuAlter;
 import Views.StudentInterface.StuInformation.StuInformation;
 import Views.StudentInterface.Student;
+import Views.StudentInterface.client;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -46,6 +48,13 @@ public class StuMainInterface extends JFrame {
                 alterPanel.setVisible(true);
             }
         });
+        clientbutton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                client client=new client();
+
+            }
+        });
 
     }
     private void initComponents() {
@@ -58,6 +67,7 @@ public class StuMainInterface extends JFrame {
         checkbutton = new JButton();
         alertbutton = new JButton();
         applybutton = new JButton();
+        clientbutton= new JButton();
 
         //======== this ========
         setTitle(bundle.getString("StuMainInterface.this.title"));
@@ -110,6 +120,11 @@ public class StuMainInterface extends JFrame {
                 //---- applybutton ----
                 applybutton.setText(bundle.getString("StuMainInterface.applybutton.text"));
                 panel3.add(applybutton);
+
+                //---- clientbutton ----
+               clientbutton.setText(bundle.getString("StuMainInterface.clientbutton.text"));
+                panel3.add(clientbutton);
+
             }
             panel1.add(panel3);
             panel3.setBounds(30, 30, 110, 390);
@@ -142,7 +157,7 @@ public class StuMainInterface extends JFrame {
     public static void main(String[] args) {
 //        Student student=new Student
 //                ("张三", "123456", "男","2023001", 20,"13812345678" ,"计算机科学", 101, 1);
-        Student student=new Student("张三", "123456","2023001");
+        Student student=new Student("张三", "13560560647","2023001");
         new StuMainInterface(student).setVisible(true);
     }
 
@@ -154,5 +169,6 @@ public class StuMainInterface extends JFrame {
     private JButton checkbutton;
     private JButton alertbutton;
     private JButton applybutton;
+    private JButton clientbutton;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 }

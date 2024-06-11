@@ -34,6 +34,7 @@ public class StuAlterPho extends JFrame {
             System.out.println("数据库连接成功");
             //查找
             try(Statement stmt = connection.createStatement()) {
+                //查询
                 ResultSet rs = stmt.executeQuery("select * from student where studentid='"+student.StuID+"'");
                 // 处理查询结果
                 while (rs.next()) {
@@ -56,6 +57,7 @@ public class StuAlterPho extends JFrame {
     }
     public void StuAlterFunction(Student student){
         Connect connect=new Connect();
+        //
         String sql="update student \n" +
                 "set phone=?\n" +
                 "where studentid=?;";
