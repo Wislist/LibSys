@@ -32,7 +32,7 @@ public class server extends JFrame{
     public server() throws HeadlessException{
         super();
         //GUI界面
-        frame=new JFrame("server");
+        frame=new JFrame("宿管端");
         frame.setBounds(500,100,360,360);
         panel1=new JPanel();
         panel2=new JPanel();
@@ -41,8 +41,8 @@ public class server extends JFrame{
         JScrollPane jScrollPane=new JScrollPane(Chat_box);
         panel1.add(jScrollPane,BorderLayout.NORTH);
         input_box=new JTextArea(4,30);
-        connect_button=new JButton("connect");
-        send_button=new JButton("send");
+        connect_button=new JButton("连接");
+        send_button=new JButton("发送");
         panel2.add(input_box, BorderLayout.CENTER);
         panel3.add(connect_button,BorderLayout.WEST);
         panel3.add(send_button,BorderLayout.SOUTH);
@@ -69,7 +69,7 @@ public class server extends JFrame{
                     return;
 
                 send(str);
-                Chat_box.append("服务器(我)"
+                Chat_box.append("宿管端(我)"
                         +new SimpleDateFormat("hh:mm:ss").format(Calendar.getInstance().getTime())
                         +":\n"+str+" "+"\n\n");
                 input_box.setText("");//清空对话框
@@ -85,7 +85,7 @@ public class server extends JFrame{
                     if (str.trim().length()==0)
                         return;
                     send(str);
-                    Chat_box.append("服务器(我)"
+                    Chat_box.append("宿管端(我)"
                             +new SimpleDateFormat("hh:mm:ss").format(Calendar.getInstance().getTime())
                             +":\n"+str+" "+"\n\n");
                     input_box.setText("");//清空对话框
@@ -98,7 +98,7 @@ public class server extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 try {
                     serverSocket = new ServerSocket(8888);
-                    Chat_box.append("服务器已启动，等待连接中... \n");
+                    Chat_box.append("宿管端已启动，等待连接中... \n");
 
                     new Thread(new StartUp()).start();
 
@@ -117,7 +117,7 @@ public class server extends JFrame{
                 //建立向客户端的输出流
                 DataOutputStream dataOutputStream=new DataOutputStream(socket.getOutputStream());
                 dataOutputStream
-                        .writeUTF("服务器"
+                        .writeUTF("宿管端"
                                 +new SimpleDateFormat("hh:mm:ss").format(Calendar.getInstance().getTime())
                                 +":\n"+str+" "+"\n");
                 //输入bye退出
@@ -137,7 +137,7 @@ public class server extends JFrame{
                     Socket socket=serverSocket.accept();
                     clients.add(socket);
                     new Thread(new Receive(socket)).start();
-                    Chat_box.append("客户端连接成功 \n\n");
+                    Chat_box.append("学生端连接成功 \n\n");
                 }
 
             } catch (IOException e) {
@@ -164,7 +164,7 @@ public class server extends JFrame{
 
                 }
             }catch (SocketException e){
-                Chat_box.append("客户端断开\n");
+                Chat_box.append("学生端断开\n");
             } catch (IOException e) {
                 e.printStackTrace();
             }finally {

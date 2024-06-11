@@ -27,7 +27,7 @@ public class client extends JFrame{
     }
     public client(){
         //GUI界面
-        frame=new JFrame("client");
+        frame=new JFrame("学生端");
         frame.setBounds(900,100,360,360);
         panel1=new JPanel();
         panel2=new JPanel();
@@ -36,14 +36,15 @@ public class client extends JFrame{
         JScrollPane jScrollPane=new JScrollPane(Chat_box);
         panel1.add(jScrollPane, BorderLayout.NORTH);
         input_box=new JTextArea(4,30);
-        connect_button=new JButton("connect");
-        send_button=new JButton("send");
+        connect_button=new JButton("连接");
+        send_button=new JButton("发送");
         panel2.add(input_box, BorderLayout.CENTER);
         panel3.add(connect_button,BorderLayout.WEST);
         panel3.add(send_button,BorderLayout.SOUTH);
         frame.getContentPane().add(panel1,BorderLayout.NORTH);
         frame.getContentPane().add(panel2,BorderLayout.CENTER);
         frame.getContentPane().add(panel3,BorderLayout.SOUTH);
+        Chat_box.setText("宿管工作时间：\n             10：00-12：30\n             14：30-21：00\n点击“连接”按钮连接宿管\n");
 
         Chat_box.setEditable(false);//对话框不可编辑
         //自动换行
@@ -63,7 +64,7 @@ public class client extends JFrame{
                 if (str.trim().length()==0)//判断发送是否为空
                     return;
                 send(str);
-                Chat_box.append("客户端(我)"
+                Chat_box.append("学生端(我)"
                         +new SimpleDateFormat("hh:mm:ss").format(Calendar.getInstance().getTime())
                         +":\n"+str+" "+"\n\n");
                 input_box.setText("");//清空对话框
@@ -79,7 +80,7 @@ public class client extends JFrame{
                     if (str.trim().length()==0)
                         return;
                     send(str);
-                    Chat_box.append("客户端(我)"
+                    Chat_box.append("学生端(我)"
                             +new SimpleDateFormat("hh:mm:ss").format(Calendar.getInstance().getTime())
                             +":\n"+str+" "+"\n\n");
 
@@ -93,7 +94,7 @@ public class client extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 try {
                     socket=new Socket("localhost",8888);
-                    Chat_box.append("服务器连接成功 \n\n");
+                    Chat_box.append("宿管端连接成功 \n\n");
                     new Thread(new Receive()).start();
                 } catch (IOException ex) {
                     ex.printStackTrace();
@@ -107,7 +108,7 @@ public class client extends JFrame{
 
             DataOutputStream dataOutputStream=new DataOutputStream(socket.getOutputStream());
             dataOutputStream
-                    .writeUTF("客户端"
+                    .writeUTF("学生端"
                             +new SimpleDateFormat("hh:mm:ss").format(Calendar.getInstance().getTime())
                             +":\n"+str+" "+"\n");
             if(str.contains("bye"))//不能用 equals()
