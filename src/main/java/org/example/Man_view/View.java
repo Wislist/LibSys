@@ -27,7 +27,7 @@ public class View extends JFrame {
 
     private void initComponents() {
         setTitle("宿舍管理系统");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(600, 400);
         setResizable(false);
         setLocationRelativeTo(null);
@@ -221,11 +221,4 @@ public class View extends JFrame {
             JOptionPane.showMessageDialog(this, "搜索学生信息失败: " + e.getMessage(), "错误", JOptionPane.ERROR_MESSAGE);
             e.printStackTrace();
         }
-    }
-
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new View().setVisible(true));
-    }
-}
-
+    }}

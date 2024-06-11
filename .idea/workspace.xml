@@ -82,7 +82,7 @@
       <change afterPath="$PROJECT_DIR$/../Ceshi2/src/Shuzu.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../Ceshi2/src/Year.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../Ceshi2/刘一舟java作业.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Man_view/addView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Main_View.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../LangCollections/LangCollections.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../Tcpstudy/Tcpstudy.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../javawebdemo/javawebdemo.iml" afterDir="false" />
@@ -94,11 +94,12 @@
       <change afterPath="$PROJECT_DIR$/../../python/work/jsstudy2.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../python/work/xmlstudy.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../untitled/untitled.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2b993964-aa1a-4587-8986-83e672c50cb1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/2b993964-aa1a-4587-8986-83e672c50cb1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2b993964-aa1a-4587-8986-83e672c50cb1/storage_v2/_src_/schema/students.mMXRbw.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/2b993964-aa1a-4587-8986-83e672c50cb1/storage_v2/_src_/schema/students.mMXRbw.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Man_view/UpdateView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Man_view/UpdateView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Man_view/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Man_view/View.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Personal_View/PersonalView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Personal_View/PersonalView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,26 +126,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Leo&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;D:/workplace/java/Java_work2/src/main/java/org/example/Main.java&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "Leo",
+    "last_opened_file_path": "D:/workplace/java/Java_work2",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "onboarding.tips.debug.path": "D:/workplace/java/Java_work2/src/main/java/org/example/Main.java",
+    "project.structure.last.edited": "模块",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ],
+    "com.intellij.ide.scratch.LRUPopupBuilder$1/SQL 方言": [
+      "MySQL"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="View" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.Man_view.View" />
@@ -175,22 +183,13 @@
       <updated>1717603183335</updated>
       <workItem from="1717603184365" duration="10049000" />
       <workItem from="1717648630930" duration="869000" />
-      <workItem from="1717649511526" duration="19033000" />
+      <workItem from="1717649511526" duration="21033000" />
+      <workItem from="1717773665948" duration="18447000" />
+      <workItem from="1718097957075" duration="2842000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/Main.java</url>
-          <line>15</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
