@@ -104,7 +104,7 @@ public class UpdateView extends JFrame {
             // 更新数据库
             try (Connection connection = Connect.getConnection();
                  PreparedStatement statement = connection.prepareStatement(
-                         "UPDATE student SET name = ?,password=?, gender = ?, phone = ?, age = ?, subject = ?, home = ?, bed = ? where studentid = ?")) {
+                         "UPDATE student SET name = ?,password = ?, gender = ?, phone = ?, age = ?, subject = ?, home = ?, bed = ? where studentid = ?")) {
                 statement.setString(1, name);
                 statement.setString(2,password);
                 statement.setString(3, gender);

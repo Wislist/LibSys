@@ -151,7 +151,7 @@ public class View extends JFrame {
     private void deleteUser() {
         int selectedRow = table.getSelectedRow();
         if (selectedRow != -1) {
-            String studentId = (String) table.getValueAt(selectedRow, 3);
+            String studentId = (String) table.getValueAt(selectedRow, 4);
             if (confirmDelete(studentId)) {
                 try (Connection connection = Connect.getConnection();
                      PreparedStatement statement = connection.prepareStatement("DELETE FROM student WHERE studentid = ?")) {
