@@ -138,12 +138,12 @@ public class StuMainInterface extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    public static void main(String[] args) {
-//        Student student=new Student
-//                ("张三", "123456", "男","2023001", 20,"13812345678" ,"计算机科学", 101, 1);
-        Student student=new Student("张三", "123456","2023001");
-        new StuMainInterface(student).setVisible(true);
-    }
+//    public static void main(String[] args) {
+////        Student student=new Student
+////                ("张三", "123456", "男","2023001", 20,"13812345678" ,"计算机科学", 101, 1);
+//        Student student=new Student("张三", "123456","2023001");
+//        new StuMainInterface(student).setVisible(true);
+//    }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
     private JPanel panel1;

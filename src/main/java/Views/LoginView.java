@@ -1,11 +1,13 @@
 package Views;
 
 import Pojo.AdminLogin;
+import Pojo.Student;
 import Pojo.StudentLogin;
 import Service.AdminService;
 import Service.Impl.AdminServiceImpl;
 import Service.Impl.StuServiceImpl;
 import Service.StuService;
+import Views.StudentInterface.StuMainInterface.StuMainInterface;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -274,6 +276,8 @@ public class LoginView extends JFrame {
                         if(flag){
                                 //跳转到学生主页
 
+                                Student student=new Student("zhang", pwd,id);
+                                new StuMainInterface(student).setVisible(true);
                                 dispose();
                         }else {
                                 JOptionPane.showMessageDialog(null,"学生用户名密码错误！");
