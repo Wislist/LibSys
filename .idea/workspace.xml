@@ -82,7 +82,6 @@
       <change afterPath="$PROJECT_DIR$/../Ceshi2/src/Shuzu.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../Ceshi2/src/Year.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../Ceshi2/刘一舟java作业.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Main_View.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../LangCollections/LangCollections.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../Tcpstudy/Tcpstudy.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../javawebdemo/javawebdemo.iml" afterDir="false" />
@@ -94,11 +93,7 @@
       <change afterPath="$PROJECT_DIR$/../../python/work/jsstudy2.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../python/work/xmlstudy.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../untitled/untitled.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2b993964-aa1a-4587-8986-83e672c50cb1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/2b993964-aa1a-4587-8986-83e672c50cb1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2b993964-aa1a-4587-8986-83e672c50cb1/storage_v2/_src_/schema/students.mMXRbw.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/2b993964-aa1a-4587-8986-83e672c50cb1/storage_v2/_src_/schema/students.mMXRbw.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main_View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main_View.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Personal_View/PersonalView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Personal_View/PersonalView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -185,7 +180,7 @@
       <workItem from="1717648630930" duration="869000" />
       <workItem from="1717649511526" duration="21033000" />
       <workItem from="1717773665948" duration="18447000" />
-      <workItem from="1718097957075" duration="2842000" />
+      <workItem from="1718097957075" duration="3311000" />
     </task>
     <servers />
   </component>

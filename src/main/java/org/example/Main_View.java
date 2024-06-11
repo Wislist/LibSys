@@ -35,7 +35,8 @@ public class Main_View extends JFrame {
                     switch (buttonText) {
                         case "个人信息查看":
                             // 打开个人信息界面
-                            new PersonalView("001").setVisible(true); // 假设登录用户名为 "001"
+                            //
+                            new PersonalView("001").setVisible(true); // 假设登录用户名为 "001" 后续需调整为登录之后的工号
                             break;
                         case "通知处理":
                             // 打开通知处理界面

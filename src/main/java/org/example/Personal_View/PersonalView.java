@@ -143,7 +143,4 @@ public class PersonalView extends JFrame {
             e.printStackTrace();
         }
     }
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new PersonalView("001").setVisible(true));
-    }
 }
