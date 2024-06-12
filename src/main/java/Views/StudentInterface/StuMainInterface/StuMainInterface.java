@@ -103,7 +103,28 @@ public class StuMainInterface extends JFrame {
         {
             panel1.setLayout(null);
 
+            //======== panel2 ========
+            {
+                panel2.setBorder(new EtchedBorder());
+                panel2.setLayout(null);
 
+                {
+                    // compute preferred size
+                    Dimension preferredSize = new Dimension();
+                    for(int i = 0; i < panel2.getComponentCount(); i++) {
+                        Rectangle bounds = panel2.getComponent(i).getBounds();
+                        preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
+                        preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
+                    }
+                    Insets insets = panel2.getInsets();
+                    preferredSize.width += insets.right;
+                    preferredSize.height += insets.bottom;
+                    panel2.setMinimumSize(preferredSize);
+                    panel2.setPreferredSize(preferredSize);
+                }
+            }
+            panel1.add(panel2);
+            panel2.setBounds(155, 30, 600, 400);
 
             //======== panel3 ========
             {
@@ -130,7 +151,7 @@ public class StuMainInterface extends JFrame {
                 panel3.add(clientbutton);
             }
             panel1.add(panel3);
-            panel3.setBounds(30, 30, 580, 100);
+            panel3.setBounds(30, 30, 110, 390);
 
             {
                 // compute preferred size
@@ -172,6 +193,7 @@ public class StuMainInterface extends JFrame {
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
     private JPanel panel1;
 
+    private JPanel panel2;
     private JPanel panel3;
     private JButton button1;
     private JButton checkbutton;

@@ -1,8 +1,7 @@
 package Views.StudentInterface.Personal_View;
 
-
+import Pojo.AdminLogin;
 import Views.StudentInterface.Connect.Personal_Connect;
-import Views.StudentInterface.Man_view.View;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,7 +10,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class PersonalView extends JFrame {
     private JLabel usernameLabel;
@@ -28,10 +26,11 @@ public class PersonalView extends JFrame {
     private JTextField buildingField;
     private JTextField floorField;
 
-    private String username; // 登录的用户名
+     // 登录的用户名
+    public PersonalView() {
 
-    public PersonalView(String username) {
-        this.username = username;
+        AdminLogin adminLogin = new AdminLogin();
+        String id = "001";
 
         setTitle("宿管个人信息");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -73,16 +72,16 @@ public class PersonalView extends JFrame {
         add(floorLabel);
         add(floorField);
 
-        fetchDormManagerInfo(username);
+        fetchDormManagerInfo(id);
 
         setVisible(true);
     }
 
-    private void fetchDormManagerInfo(String username) {
+    private void fetchDormManagerInfo(String id) {
         try (Connection connection = Personal_Connect.getConnection();
              PreparedStatement statement = connection.prepareStatement(
                      "SELECT * FROM management_data WHERE man_username = ?")) {
-            statement.setString(1, username);
+            statement.setString(1, id);
             ResultSet resultSet = statement.executeQuery();
 
             if (resultSet.next()) {

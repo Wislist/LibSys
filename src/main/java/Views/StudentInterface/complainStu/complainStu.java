@@ -22,7 +22,7 @@ public class complainStu extends JFrame {
         Connection connection = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/student", "root", "root");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/libsys", "root", "root");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -54,7 +54,7 @@ public class complainStu extends JFrame {
     }
     private void insertNotice(String noticeContent, String noticeCreateTime) {
         // 这里需要根据你的数据库配置进行修改
-        String url = "jdbc:mysql://localhost:3306/student";
+        String url = "jdbc:mysql://localhost:3306/libsys";
         String user = "root";
         String password = "root";
 

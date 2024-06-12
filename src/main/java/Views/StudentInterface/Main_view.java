@@ -1,4 +1,8 @@
 package Views.StudentInterface;
+/**
+ * new PersonalView("001").setVisible(true); // 假设登录用户名为 "001" 后续需调整为登录之后的工号
+ * 传参 工号
+ */
 
 import Views.StudentInterface.Connect.Personal_Connect;
 import Views.StudentInterface.complain.complain;
@@ -12,6 +16,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Main_view extends JFrame {
+    String id;
 
     private String[] buttonTexts = {"个人信息查看", "通知处理", "学生信息管理", "退出"};
 
@@ -37,8 +42,8 @@ public class Main_view extends JFrame {
                     switch (buttonText) {
                         case "个人信息查看":
                             // 打开个人信息界面
-                            //
-                            new PersonalView("001").setVisible(true); // 假设登录用户名为 "001" 后续需调整为登录之后的工号
+
+                            new PersonalView().setVisible(true); // 假设登录用户名为 "001" 后续需调整为登录之后的工号
                             break;
                         case "通知处理":
                             // 打开通知处理界面
@@ -65,7 +70,7 @@ public class Main_view extends JFrame {
         setVisible(true);
     }
 
-//    public static void main(String[] args) {
-//        SwingUtilities.invokeLater(() -> new Main_view());
-//    }
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> new Main_view());
+    }
 }
