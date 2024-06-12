@@ -1,7 +1,7 @@
 package Views.StudentInterface.callboard;
 
 
-import Views.LoginView;
+import Views.LoginAndRegisterView.LoginView;
 
 
 import java.awt.*;

@@ -1,4 +1,4 @@
-package Views;
+package Views.LoginAndRegisterView;
 
 import Pojo.AdminLogin;
 import Pojo.StudentLogin;

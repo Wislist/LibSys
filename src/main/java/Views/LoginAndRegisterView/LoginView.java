@@ -1,14 +1,12 @@
-package Views;
+package Views.LoginAndRegisterView;
 
 import Pojo.AdminLogin;
-import Pojo.Student;
 import Pojo.StudentLogin;
 import Service.AdminService;
 import Service.Impl.AdminServiceImpl;
 import Service.Impl.StuServiceImpl;
 import Service.StuService;
 import Views.StudentInterface.Main_view;
-import Views.StudentInterface.StuMainInterface.StuMainInterface;
 import lombok.Getter;
 import lombok.Setter;
 

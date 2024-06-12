@@ -4,7 +4,7 @@
 
 package Views.StudentInterface.StuMainInterface;
 
-import Views.LoginView;
+import Views.LoginAndRegisterView.LoginView;
 import Views.StudentInterface.AlterPanel.AlterPanel;
 import Views.StudentInterface.StuInformation.StuInformation;
 import Pojo.Student;

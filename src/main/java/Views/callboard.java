@@ -1,6 +1,8 @@
 package Views;
 
 
+import Views.LoginAndRegisterView.LoginView;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -127,7 +129,7 @@ public class callboard extends JFrame {
     public callboard() {
         //窗体图标
         setTitle("学生宿舍管理");
-        URL resource = Login.class.getClassLoader().getResource("Logo.png");
+        URL resource = LoginView.class.getClassLoader().getResource("Logo.png");
         Image image = new ImageIcon(resource).getImage();
         setIconImage(image);
         initComponents();

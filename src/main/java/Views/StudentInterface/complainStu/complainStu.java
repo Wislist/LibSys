@@ -4,7 +4,7 @@
 
 package Views.StudentInterface.complainStu;
 
-import Views.LoginView;
+import Views.LoginAndRegisterView.LoginView;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
