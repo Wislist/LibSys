@@ -4,8 +4,8 @@
 
 package Views.StudentInterface.StuAlterPho;
 
-import Utils.Connect;
 import Pojo.Student;
+import Views.StudentInterface.Connect.Connect;
 import Views.StudentInterface.dialog;
 
 import java.awt.*;

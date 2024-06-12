@@ -4,8 +4,8 @@
 
 package Views.StudentInterface.StuInformation;
 
-import Utils.Connect;
 import Pojo.Student;
+import Views.StudentInterface.Connect.Connect;
 
 import java.awt.*;
 import java.sql.Connection;
