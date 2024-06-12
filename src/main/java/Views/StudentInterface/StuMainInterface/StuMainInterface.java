@@ -103,28 +103,6 @@ public class StuMainInterface extends JFrame {
         {
             panel1.setLayout(null);
 
-            //======== panel2 ========
-            {
-                panel2.setBorder(new EtchedBorder());
-                panel2.setLayout(null);
-
-                {
-                    // compute preferred size
-                    Dimension preferredSize = new Dimension();
-                    for(int i = 0; i < panel2.getComponentCount(); i++) {
-                        Rectangle bounds = panel2.getComponent(i).getBounds();
-                        preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
-                        preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
-                    }
-                    Insets insets = panel2.getInsets();
-                    preferredSize.width += insets.right;
-                    preferredSize.height += insets.bottom;
-                    panel2.setMinimumSize(preferredSize);
-                    panel2.setPreferredSize(preferredSize);
-                }
-            }
-            panel1.add(panel2);
-            panel2.setBounds(155, 30, 600, 400);
 
             //======== panel3 ========
             {
@@ -151,7 +129,7 @@ public class StuMainInterface extends JFrame {
                 panel3.add(clientbutton);
             }
             panel1.add(panel3);
-            panel3.setBounds(30, 30, 110, 390);
+            panel3.setBounds(30, 30, 550, 110);
 
             {
                 // compute preferred size
@@ -179,14 +157,15 @@ public class StuMainInterface extends JFrame {
     }
 
     public static void main(String[] args) {
-    //    Student student=new Student
-      //          ("张三",
-        //                "123456", "男","2023001", 20,"13812345678" ,"计算机科学", 101, 1);
+//        Student student=new Student
+//                ("张三", "123456", "男","2023001", 20,"13812345678" ,"计算机科学", 101, 1);
+//        Student student=new Student("张三","123456","2023001");
         StudentLogin studentLogin = new StudentLogin();
         String name = studentLogin.getName();
         String psw = studentLogin.getPassword();
         String id = studentLogin.getStuID();
         Student student=new Student(name, psw,id);
+
         new StuMainInterface(student).setVisible(true);
     }
 

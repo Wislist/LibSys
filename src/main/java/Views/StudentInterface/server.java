@@ -60,8 +60,7 @@ public class server extends JFrame{
         Chat_box.setLineWrap(true);
         Chat_box.setWrapStyleWord(true);
         input_box.requestFocus();//对话框聚焦
-        //关闭窗口即退出程序
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
         frame.setVisible(true);
     }
     void init(){

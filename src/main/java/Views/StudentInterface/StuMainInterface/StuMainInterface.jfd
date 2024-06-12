@@ -11,15 +11,6 @@ new FormModel {
 			"title": new FormMessage( null, "StuMainInterface.this.title" )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
 				name: "panel1"
-				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
-					name: "panel2"
-					"border": new javax.swing.border.EtchedBorder( 1, null, null )
-				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-					"x": 155
-					"y": 30
-					"width": 600
-					"height": 400
-				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
 					name: "panel3"
 					add( new FormComponent( "javax.swing.JButton" ) {
@@ -45,8 +36,8 @@ new FormModel {
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 30
 					"y": 30
-					"height": 390
-					"width": 110
+					"height": 100
+					"width": 550
 				} )
 			}, new FormLayoutConstraints( class java.lang.String ) {
 				"value": "Center"
