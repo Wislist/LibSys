@@ -25,7 +25,7 @@ public class complain extends JFrame {
         Connection connection = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/student", "root", "root");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/libsys", "root", "root");
         } catch (Exception e) {
             e.printStackTrace();
         }

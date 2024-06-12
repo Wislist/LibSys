@@ -22,7 +22,7 @@ import javax.swing.table.DefaultTableModel;
 public class callboard extends JFrame {
     private void insertNotice(String noticeContent, String noticeCreateTime) {
         // 这里需要根据你的数据库配置进行修改
-        String url = "jdbc:mysql://localhost:3306/student";
+        String url = "jdbc:mysql://localhost:3306/libsys";
         String user = "root";
         String password = "root";
 
@@ -41,7 +41,7 @@ public class callboard extends JFrame {
     // 修改 queryNoticesFromDatabase 方法，添加一个参数 time
     private String[][] queryNoticesFromDatabase(String time) {
         // 这里需要根据你的数据库配置进行修改
-        String url = "jdbc:mysql://localhost:3306/student";
+        String url = "jdbc:mysql://localhost:3306/libsys";
         String user = "root";
         String password = "root";
 
@@ -67,7 +67,7 @@ public class callboard extends JFrame {
     }
     private boolean isAnnounceExists(String date, String annText) {
         try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/student", "root", "root");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/libsys", "root", "root");
             String query = "SELECT * FROM announce WHERE date = ? AND annText = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, date);
@@ -87,7 +87,7 @@ public class callboard extends JFrame {
 
     private void deleteAnnounce(String date, String annText) {
         try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/student", "root", "root");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/libsys", "root", "root");
             String deleteQuery = "DELETE FROM announce WHERE date = ? AND annText = ?";
             PreparedStatement deleteStatement = connection.prepareStatement(deleteQuery);
             deleteStatement.setString(1, date);
@@ -102,7 +102,7 @@ public class callboard extends JFrame {
     }
     private String[][] queryNoticesFromDatabase() {
         // 这里需要根据你的数据库配置进行修改
-        String url = "jdbc:mysql://localhost:3306/student";
+        String url = "jdbc:mysql://localhost:3306/libsys";
         String user = "root";
         String password = "root";
 

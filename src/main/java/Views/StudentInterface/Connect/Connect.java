@@ -7,7 +7,7 @@ import java.sql.Statement;
 
 public class Connect {
     private static String driverName="com.mysql.cj.jdbc.Driver";
-    private static String url = "jdbc:mysql://localhost:3306/students";
+    private static String url = "jdbc:mysql://localhost:3306/libsys";
     private static String userName = "root";
     private static String password = "root";
     private Connection conn;

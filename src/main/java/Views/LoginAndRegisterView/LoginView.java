@@ -275,7 +275,6 @@ public class LoginView extends JFrame {
                         boolean flag = stuService.findById(students);
                         if(flag){
                                 //跳转到学生主页
-
                                 SwingUtilities.invokeLater(() -> new Main_view());
                                 dispose();
                         }else {
