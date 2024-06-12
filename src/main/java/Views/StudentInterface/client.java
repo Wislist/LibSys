@@ -26,7 +26,7 @@ public class client extends JFrame{
 
     public static void main(String[] args) {
         client client=new client();
-        client.init();
+
     }
     public client(){
         //GUI界面
@@ -56,6 +56,7 @@ public class client extends JFrame{
         input_box.requestFocus();//对话框聚焦
 
         frame.setVisible(true);
+        init();
     }
     void init(){
         //点击send发送文本框内容
