@@ -1,8 +1,8 @@
-package org.example;
+package Views.StudentInterface;
 
-import org.example.Connect.Personal_Connect;
-import org.example.Man_view.View;
-import org.example.Personal_View.PersonalView;
+import Views.StudentInterface.Connect.Personal_Connect;
+import Views.StudentInterface.Man_view.View;
+import Views.StudentInterface.Personal_View.PersonalView;
 
 import javax.swing.*;
 import java.awt.*;
