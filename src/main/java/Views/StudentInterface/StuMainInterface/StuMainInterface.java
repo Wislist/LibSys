@@ -164,6 +164,7 @@ public class StuMainInterface extends JFrame {
         String name = studentLogin.getName();
         String psw = studentLogin.getPassword();
         String id = studentLogin.getStuID();
+
         Student student=new Student(name, psw,id);
 
         new StuMainInterface(student).setVisible(true);

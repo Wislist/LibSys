@@ -17,7 +17,7 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public boolean findById(AdminLogin admin) {
-        String sql = "select password from admin where id = ?";
+        String sql = "select password from admin_login where id = ?";
 
         PreparedStatement ps = null;
         try {
@@ -43,7 +43,7 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public void insert(AdminLogin admin) {
-        String sql = "INSERT INTO admin (id, users, password) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO admin_login (id, users, password) VALUES (?, ?, ?)";
         PreparedStatement ps = null;
         try {
             Connection connection = JdbcUtils.getInstance().getConnection();

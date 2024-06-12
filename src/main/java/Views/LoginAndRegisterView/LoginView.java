@@ -1,12 +1,17 @@
 package Views.LoginAndRegisterView;
 
 import Pojo.AdminLogin;
+import Pojo.Student;
 import Pojo.StudentLogin;
 import Service.AdminService;
 import Service.Impl.AdminServiceImpl;
 import Service.Impl.StuServiceImpl;
 import Service.StuService;
+import Utils.JdbcUtils;
 import Views.StudentInterface.Main_view;
+import Views.StudentInterface.Man_view.View;
+import Views.StudentInterface.StuInformation.StuInformation;
+import Views.StudentInterface.StuMainInterface.StuMainInterface;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,6 +20,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class LoginView extends JFrame {
 
@@ -245,7 +254,7 @@ public class LoginView extends JFrame {
         private void Login() {
                 String id = getUserTextField().getText();
                 String pwd = getPassWordTextField().getText();
-                System.out.println(id + " " + pwd);
+                //System.out.println(id + " " + pwd);
                 //校验
                 if (id == null || "".equals(id) ||
                         pwd == null || "".equals(pwd.trim())){
@@ -261,7 +270,7 @@ public class LoginView extends JFrame {
                         boolean flag = adminService.findById(admin);
                         if(flag){
                                 //跳转到宿管主页
-
+                                SwingUtilities.invokeLater(() -> new Main_view());
                                 dispose();
                         }else {
                                 JOptionPane.showMessageDialog(null,"宿管用户名密码错误！");
@@ -269,13 +278,23 @@ public class LoginView extends JFrame {
                 } else if ("学生".equals(option)) {
                         StuService stuService = new StuServiceImpl();
                         StudentLogin students = new StudentLogin();
+                        String name = stuService.findName(students);
                         students.setStuID(id);
                         students.setPassword(pwd);
+                        students.setName(name);
+
 
                         boolean flag = stuService.findById(students);
                         if(flag){
                                 //跳转到学生主页
-                                SwingUtilities.invokeLater(() -> new Main_view());
+                                StudentLogin studentLogin = new StudentLogin();
+                                String name1 = studentLogin.getName();
+
+
+                                Student student=new Student(name1, pwd,id);
+
+                                new StuMainInterface(student).setVisible(true);
+                                //System.out.println("寄");
                                 dispose();
                         }else {
                                 JOptionPane.showMessageDialog(null,"学生用户名密码错误！");

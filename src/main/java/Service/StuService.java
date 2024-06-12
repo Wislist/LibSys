@@ -14,4 +14,5 @@ public interface StuService {
     void insert(StudentLogin students);
 
 
+    String findName(StudentLogin students);
 }

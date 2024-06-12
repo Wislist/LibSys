@@ -7,6 +7,9 @@ import lombok.NoArgsConstructor;
 
 @Data
 public class Student {
+
+
+
     public String name;
     public String password;
     public String sex;

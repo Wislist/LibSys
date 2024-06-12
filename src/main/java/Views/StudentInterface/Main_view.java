@@ -18,7 +18,7 @@ import java.awt.event.ActionListener;
 public class Main_view extends JFrame {
     String id;
 
-    private String[] buttonTexts = {"个人信息查看", "通知处理", "学生信息管理", "退出"};
+    private String[] buttonTexts = {"个人信息查看", "通知处理", "学生信息管理", "联系学生"};
 
     public Main_view() {
         setTitle("宿舍管理主界面");
@@ -55,10 +55,9 @@ public class Main_view extends JFrame {
                             // 打开学生信息管理界面
                             new View().setVisible(true);
                             break;
-                        case "退出":
+                        case "联系学生":
                             // 退出程序
-                            System.exit(0);
-                            break;
+                            new server().setVisible(true);
                     }
                 }
             });

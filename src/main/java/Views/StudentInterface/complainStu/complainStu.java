@@ -51,6 +51,31 @@ public class complainStu extends JFrame {
                 }
             }
         }
+
+    }
+    private void updateTable2(){
+        Connection connection = getConnection();
+        if (connection != null) {
+            try {
+                Statement statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery("SELECT * FROM complain");
+                DefaultTableModel tableModel2 = (DefaultTableModel) table2.getModel();
+                tableModel2.setRowCount(0);
+                while (resultSet.next()) {
+                    String stu = resultSet.getString("stu");
+                    String msg = resultSet.getString("msg");
+                    tableModel2.addRow(new Object[]{stu, msg});
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }finally {
+                try {
+                    connection.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
     private void insertNotice(String noticeContent, String noticeCreateTime) {
         // 这里需要根据你的数据库配置进行修改
@@ -82,18 +107,22 @@ public class complainStu extends JFrame {
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         scrollPane1 = new JScrollPane();
+        scrollPane2 = new JScrollPane();
         table1 = new JTable();
+        table2 = new JTable();
         label1 = new JLabel();
         button1 = new JButton();
         textField1 = new JTextField();
         label2 = new JLabel();
         button2 = new JButton();
         label3 = new JLabel();
+        label4 = new JLabel();
         textField2 = new JTextField();
 
         Timer timer = new Timer(5000, e -> {
             if(isRefresh){
                 updateTable1();
+                updateTable2();
             }
 
         });
@@ -109,14 +138,26 @@ public class complainStu extends JFrame {
         contentPane.add(scrollPane1);
         scrollPane1.setBounds(200, 45, 285, 170);
 
+        //======== scrollPane2 ========
+        {
+            scrollPane2.setViewportView(table2);
+        }
+        contentPane.add(scrollPane2);
+        scrollPane2.setBounds(10, 45, 180, 170);
+
         // 创建一个DefaultTableModel对象，并设置给table1
         DefaultTableModel tableModel = new DefaultTableModel();
+        DefaultTableModel tableModel2 = new DefaultTableModel();
         table1.setModel(tableModel);
+        table2.setModel(tableModel2);
         // 添加列名
         tableModel.addColumn("学生姓名");
         tableModel.addColumn("申诉信息");
+        // 添加列名
+        tableModel2.addColumn("学生姓名");
+        tableModel2.addColumn("登记信息");
         //---- label1 ----
-        label1.setText("\u767b\u8bb0\u8868");
+        label1.setText("申诉表");
         contentPane.add(label1);
         label1.setBounds(200, 10, 65, 25);
 
@@ -162,6 +203,10 @@ public class complainStu extends JFrame {
         label2.setText("\u5b66\u751f");
         contentPane.add(label2);
         label2.setBounds(240, 245, 45, 30);
+        //---- label4 ----
+        label4.setText("登记表");
+        contentPane.add(label4);
+        label4.setBounds(10, 20, 45, 30);
 
         //---- button2 ----
         button2.setText("\u6dfb\u52a0\u8bb0\u5f55");
@@ -204,6 +249,7 @@ public class complainStu extends JFrame {
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
     private JScrollPane scrollPane1;
+    private JScrollPane scrollPane2;
     private JTable table1;
     private JLabel label1;
     private JButton button1;
@@ -211,6 +257,8 @@ public class complainStu extends JFrame {
     private JLabel label2;
     private JButton button2;
     private JLabel label3;
+    private JLabel label4;
+    private JTable table2;
     private JTextField textField2;
     private boolean isRefresh = true;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
