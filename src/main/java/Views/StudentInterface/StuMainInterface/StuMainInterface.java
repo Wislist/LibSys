@@ -4,6 +4,7 @@
 
 package Views.StudentInterface.StuMainInterface;
 
+import Pojo.StudentLogin;
 import Views.LoginAndRegisterView.LoginView;
 import Views.StudentInterface.AlterPanel.AlterPanel;
 import Views.StudentInterface.StuInformation.StuInformation;
@@ -71,18 +72,26 @@ public class StuMainInterface extends JFrame {
             }
         });
 
+        clientbutton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+//                client client=new client();
+            }
+        });
+
     }
     private void initComponents() {
 
         // JFormDesigner - Component initialization - DO NOT MODIFY
         ResourceBundle bundle = ResourceBundle.getBundle("student");
         panel1 = new JPanel();
-        panel2 = new JPanel();
+
         panel3 = new JPanel();
         button1 = new JButton();
         checkbutton = new JButton();
         alertbutton = new JButton();
         applybutton = new JButton();
+        clientbutton= new JButton();
 
         //======== this ========
         setTitle(bundle.getString("StuMainInterface.this.title"));
@@ -135,6 +144,10 @@ public class StuMainInterface extends JFrame {
                 //---- applybutton ----
                 applybutton.setText(bundle.getString("StuMainInterface.applybutton.text"));
                 panel3.add(applybutton);
+
+                //---- clientbutton ----
+                clientbutton.setText(bundle.getString("StuMainInterface.clientbutton.text"));
+                panel3.add(clientbutton);
             }
             panel1.add(panel3);
             panel3.setBounds(30, 30, 110, 390);
@@ -163,20 +176,27 @@ public class StuMainInterface extends JFrame {
         ButtonFunction(student);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
-    //   public static void main(String[] args) {
-////        Student student=new Student
-////                ("张三", "123456", "男","2023001", 20,"13812345678" ,"计算机科学", 101, 1);
-//        Student student=new Student("张三", "123456","2023001");
-//        new StuMainInterface(student).setVisible(true);
-//    }
+
+    public static void main(String[] args) {
+    //    Student student=new Student
+      //          ("张三",
+        //                "123456", "男","2023001", 20,"13812345678" ,"计算机科学", 101, 1);
+        StudentLogin studentLogin = new StudentLogin();
+        String name = studentLogin.getName();
+        String psw = studentLogin.getPassword();
+        String id = studentLogin.getStuID();
+        Student student=new Student(name, psw,id);
+        new StuMainInterface(student).setVisible(true);
+    }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
     private JPanel panel1;
-    private JPanel panel2;
+
     private JPanel panel3;
     private JButton button1;
     private JButton checkbutton;
     private JButton alertbutton;
     private JButton applybutton;
+    private JButton clientbutton;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 }
