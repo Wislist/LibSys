@@ -7,6 +7,7 @@ import Service.AdminService;
 import Service.Impl.AdminServiceImpl;
 import Service.Impl.StuServiceImpl;
 import Service.StuService;
+import Views.StudentInterface.Main_view;
 import Views.StudentInterface.StuMainInterface.StuMainInterface;
 import lombok.Getter;
 import lombok.Setter;
@@ -272,12 +273,12 @@ public class LoginView extends JFrame {
                         StudentLogin students = new StudentLogin();
                         students.setStuID(id);
                         students.setPassword(pwd);
+
                         boolean flag = stuService.findById(students);
                         if(flag){
                                 //跳转到学生主页
 
-                                Student student=new Student("zhang", pwd,id);
-                                new StuMainInterface(student).setVisible(true);
+                                SwingUtilities.invokeLater(() -> new Main_view());
                                 dispose();
                         }else {
                                 JOptionPane.showMessageDialog(null,"学生用户名密码错误！");
