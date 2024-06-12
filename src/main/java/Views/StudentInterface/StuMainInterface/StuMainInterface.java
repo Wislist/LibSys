@@ -10,6 +10,7 @@ import Views.StudentInterface.AlterPanel.AlterPanel;
 import Views.StudentInterface.StuInformation.StuInformation;
 import Pojo.Student;
 import Views.StudentInterface.callboard.callboard;
+import Views.StudentInterface.client;
 import Views.StudentInterface.complainStu.complainStu;
 
 import java.awt.*;
@@ -75,7 +76,7 @@ public class StuMainInterface extends JFrame {
         clientbutton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-//                client client=new client();
+                client client=new client();
             }
         });
 

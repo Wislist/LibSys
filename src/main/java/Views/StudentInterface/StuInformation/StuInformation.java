@@ -38,7 +38,7 @@ public class StuInformation extends JFrame {
                     // 获取数据
                     student.phone = rs.getString("phone");
                     student.age= rs.getInt("age");
-                    student.sex= rs.getString("gencher");
+                    student.sex= rs.getString("gender");
                     student.major= rs.getString("subject");
                     student.dormID=rs.getInt("home");
                     student.bedID=rs.getInt("bed");
