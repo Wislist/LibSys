@@ -52,7 +52,7 @@ public class AdminServiceImpl implements AdminService {
             ps.setString(1,admin.getId());
             ps.setString(2,admin.getUsers());
             ps.setString(3,admin.getPassword());
-            ps.executeQuery();
+            ps.executeUpdate();
             System.out.println("插入成功safe~");
         }catch (Exception e){
             e.printStackTrace();

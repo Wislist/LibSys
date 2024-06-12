@@ -51,7 +51,7 @@ public class StuServiceImpl implements StuService {
             ps.setString(1,students.getStuID());
             ps.setString(2,students.getName());
             ps.setString(3,students.getPassword());
-            ps.executeQuery();
+            ps.executeUpdate();
             System.out.println("插入成功safe~");
         }catch (Exception e){
             e.printStackTrace();
