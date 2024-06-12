@@ -1,19 +1,21 @@
 package Views.StudentInterface;
 
 import Views.StudentInterface.Connect.Personal_Connect;
+import Views.StudentInterface.complain.complain;
 import Views.StudentInterface.Man_view.View;
 import Views.StudentInterface.Personal_View.PersonalView;
+
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Main_View extends JFrame {
+public class Main_view extends JFrame {
 
     private String[] buttonTexts = {"个人信息查看", "通知处理", "学生信息管理", "退出"};
 
-    public Main_View() {
+    public Main_view() {
         setTitle("宿舍管理主界面");
         setSize(600, 400);
         setLocationRelativeTo(null);
@@ -42,7 +44,7 @@ public class Main_View extends JFrame {
                             // 打开通知处理界面
                             // ... 创建通知处理界面 ...
                             // ... 设置界面可见 ...
-
+                            new complain().setVisible(true);
                             break;
                         case "学生信息管理":
                             // 打开学生信息管理界面
@@ -64,6 +66,6 @@ public class Main_View extends JFrame {
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new Main_View());
+        SwingUtilities.invokeLater(() -> new Main_view());
     }
 }
