@@ -32,7 +32,7 @@ public class server extends JFrame{
 
     public static void main(String[] args) {
         server server=new server();
-        server.init();
+
     }
     public server() throws HeadlessException{
         super();
@@ -62,6 +62,7 @@ public class server extends JFrame{
         input_box.requestFocus();//对话框聚焦
 
         frame.setVisible(true);
+        init();
     }
     void init(){
         //点击send发送文本框内容
