@@ -4,13 +4,17 @@
 
 package Views.StudentInterface.StuMainInterface;
 
+import Views.LoginView;
 import Views.StudentInterface.AlterPanel.AlterPanel;
 import Views.StudentInterface.StuInformation.StuInformation;
 import Pojo.Student;
+import Views.StudentInterface.callboard.callboard;
+import Views.StudentInterface.complainStu.complainStu;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URL;
 import java.util.*;
 import javax.swing.*;
 import javax.swing.border.*;
@@ -25,6 +29,11 @@ public class StuMainInterface extends JFrame {
     }
     public StuMainInterface(Student student){
         this.student=student;
+        //窗体图标
+        setTitle("学生宿舍管理");
+        URL resource = LoginView.class.getClassLoader().getResource("Logo.png");
+        Image image = new ImageIcon(resource).getImage();
+        setIconImage(image);
         initComponents();
 
     }
@@ -45,9 +54,26 @@ public class StuMainInterface extends JFrame {
                 alterPanel.setVisible(true);
             }
         });
+        button1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                callboard callboard = new callboard();
+                callboard.setVisible(true);
+
+            }
+        });
+        applybutton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                complainStu complainStu = new complainStu();
+                complainStu.setVisible(true);
+
+            }
+        });
 
     }
     private void initComponents() {
+
         // JFormDesigner - Component initialization - DO NOT MODIFY
         ResourceBundle bundle = ResourceBundle.getBundle("student");
         panel1 = new JPanel();
