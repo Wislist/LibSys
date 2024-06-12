@@ -38,6 +38,10 @@ new FormModel {
 						name: "applybutton"
 						"text": new FormMessage( null, "StuMainInterface.applybutton.text" )
 					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "clientbutton"
+						"text": new FormMessage( null, "StuMainInterface.clientbutton.text" )
+					} )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 30
 					"y": 30
