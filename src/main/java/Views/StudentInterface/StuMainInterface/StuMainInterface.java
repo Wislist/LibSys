@@ -192,6 +192,7 @@ public class StuMainInterface extends JFrame {
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
     private JPanel panel1;
 
+    private JPanel panel2;
     private JPanel panel3;
     private JButton button1;
     private JButton checkbutton;
